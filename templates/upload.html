@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Results PDF</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    select, input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload Results PDF</h2>
+  <form id="uploadForm">
+    <label>
+      Format:
+      <select id="format" required>
+        <option value="jntuk">JNTUK</option>
+        <option value="autonomous">Autonomous</option>
+      </select>
+    </label>
+
+    <label>
+      Exam Type:
+      <select id="exam_type" required>
+        <option value="regular">Regular</option>
+        <option value="supply">Supply</option>
+      </select>
+    </label>
+
+    <label>
+      Select PDF:
+      <input type="file" id="pdf" accept="application/pdf" required />
+    </label>
+
+    <button type="submit">Upload PDF</button>
+    <div id="status"></div>
+  </form>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '📤 Uploading...';
+
+      const pdf = document.getElementById('pdf').files[0];
+      const format = document.getElementById('format').value;
+      const exam_type = document.getElementById('exam_type').value;
+
+      if (!pdf) {
+        status.textContent = '❌ Please select a PDF file!';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('pdf', pdf);
+      formData.append('format', format);
+      formData.append('exam_type', exam_type);
+
+      try {
+        const response = await fetch('http://127.0.0.1:5000/upload-pdf', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-API-Key': 'my-very-secret-admin-api-key'  // Replace with your real key
+          }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          status.textContent = `✅ Success: ${data.message || "Upload complete"}`;
+        } else {
+          status.textContent = `❌ Error: ${data.error || "Upload failed"}`;
+        }
+
+      } catch (error) {
+        status.textContent = "❌ Could not connect to the backend.";
+      }
+    });
+  </script>
+</body>
+</html>
