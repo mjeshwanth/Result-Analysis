@@ -10,19 +10,18 @@ def parse_jntuk_pdf(file_path):
     })
 
     with pdfplumber.open(file_path) as pdf:
-        full_text = ""
-        for page in pdf.pages:
-            text = page.extract_text()
-            if text:
-                full_text += text + "\n"
+        full_text = "\n".join(
+            page.extract_text() for page in pdf.pages if page.extract_text()
+        )
 
-    # Match lines with pattern: Htno Subcode Subname Internals Grade Credits
+    # Match lines like: Htno Subcode Subname Internals Grade Credits
     line_pattern = re.compile(
-        r"(?P<htno>\d{2}[A-Z]{1,2}\d{4})\s+"
-        r"(?P<subcode>[A-Z0-9]+)\s+"
-        r"(?P<subname>.+?)\s{2,}(?P<internals>\d+|ABSENT)\s+"
-        r"(?P<grade>[A-F][\+\-]?|AB|ABSENT|MP)\s+"
-        r"(?P<credits>\d+(\.\d+)?|0)"
+        r"(?P<htno>\d{2}[A-Z0-9]{6})\s+"                       # 17B81A0106
+        r"(?P<subcode>[A-Z0-9]+)\s+"                           # R161202
+        r"(?P<subname>.+?)\s{2,}(?P<internals>\d+|ABSENT)\s+"  # MATHS-II  10
+        r"(?P<grade>[A-F][\+\-]?|MP|ABSENT)\s+"                # D, F, MP
+        r"(?P<credits>\d+(?:\.\d+)?|0)",                       # 3 or 3.0
+        re.MULTILINE
     )
 
     for match in line_pattern.finditer(full_text):
@@ -31,14 +30,14 @@ def parse_jntuk_pdf(file_path):
         subcode = data['subcode']
         subname = data['subname'].strip()
         internals = 0 if data['internals'] == 'ABSENT' else int(data['internals'])
-        grade = data['grade'].strip()
+        grade = data['grade']
         credits = float(data['credits'])
 
         student = results[htno]
         student['student_id'] = htno
         student['university'] = "JNTUK"
-        student['upload_date'] = datetime.now().strftime("%Y-%m-%d")
         student['semester'] = "I B.Tech II Semester"
+        student['upload_date'] = datetime.now().strftime("%Y-%m-%d")
 
         student['subjectGrades'].append({
             "code": subcode,
