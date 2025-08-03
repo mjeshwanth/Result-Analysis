@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Portal | Sir C.R. Reddy College of Engineering</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin Portal for Sir C.R. Reddy College of Engineering - Student Result Management System">
+  
+  <!-- Modern Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
+  
+  <!-- Initialize Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "{{ firebase_config.apiKey }}",
+      authDomain: "{{ firebase_config.authDomain }}",
+      projectId: "{{ firebase_config.projectId }}",
+      storageBucket: "{{ firebase_config.storageBucket }}",
+      messagingSenderId: "{{ firebase_config.messagingSenderId }}",
+      appId: "{{ firebase_config.appId }}"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+  
+  <style>
+    :root {
+      /* Modern Color Palette */
+      --primary-600: #4f46e5;
+      --primary-700: #4338ca;
+      --primary-800: #3730a3;
+      --primary-900: #312e81;
+      
+      --secondary-50: #fafafa;
+      --secondary-100: #f4f4f5;
+      --secondary-200: #e4e4e7;
+      --secondary-300: #d4d4d8;
+      --secondary-400: #a1a1aa;
+      --secondary-500: #71717a;
+      --secondary-600: #52525b;
+      --secondary-700: #3f3f46;
+      --secondary-800: #27272a;
+      --secondary-900: #18181b;
+      
+      --success-500: #10b981;
+      --error-500: #ef4444;
+      --warning-500: #f59e0b;
+      
+      /* Gradients */
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.15);
+      
+      /* Glass Morphism */
+      --glass-background: rgba(255, 255, 255, 0.25);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--gradient-background);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Animated Background Elements */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
+      animation: backgroundFloat 20s ease-in-out infinite;
+    }
+    
+    @keyframes backgroundFloat {
+      0%, 100% { opacity: 1; transform: translateY(0px); }
+      50% { opacity: 0.8; transform: translateY(-10px); }
+    }
+    
+    /* Floating Shapes */
+    .floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      animation: float 15s infinite ease-in-out;
+    }
+    
+    .floating-shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .floating-shape:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 5s;
+    }
+    
+    .floating-shape:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 10s;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.8;
+      }
+    }
+    
+    /* Main Login Container */
+    .login-page {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      background: var(--glass-background);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+    }
+    
+    /* Left Panel - Branding */
+    .brand-panel {
+      background: var(--gradient-primary);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .brand-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    }
+    
+    .college-logo-container {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 2rem;
+    }
+    
+    .college-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: var(--shadow-xl);
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .college-logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .brand-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .college-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .college-subtitle {
+      font-size: 1.125rem;
+      font-weight: 400;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    
+    .brand-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .feature-icon {
+      width: 24px;
+      height: 24px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .feature-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    /* Right Panel - Login Form */
+    .login-panel {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    .login-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--secondary-900);
+      margin-bottom: 0.5rem;
+    }
+    
+    .login-subtitle {
+      font-size: 1rem;
+      color: var(--secondary-600);
+      font-weight: 400;
+    }
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--secondary-700);
+      margin-left: 0.25rem;
+    }
+    
+    .input-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: var(--secondary-400);
+      z-index: 2;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      border: 2px solid var(--secondary-200);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 400;
+      background: white;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+      color: var(--secondary-900);
+    }
+    
+    .form-input:focus {
+      border-color: var(--primary-600);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .form-input:focus + .input-icon {
+      color: var(--primary-600);
+    }
+    
+    .form-input::placeholder {
+      color: var(--secondary-400);
+      font-weight: 400;
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+    
+    .password-toggle:hover {
+      background: var(--secondary-100);
+    }
+    
+    .password-toggle-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--secondary-400);
+    }
+    
+    .forgot-password {
+      text-align: right;
+      margin-top: -0.5rem;
+    }
+    
+    .forgot-password a {
+      color: var(--primary-600);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .forgot-password a:hover {
+      color: var(--primary-700);
+      text-decoration: underline;
+    }
+    
+    .login-button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-top: 0.5rem;
+    }
+    
+    .login-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .login-button:active {
+      transform: translateY(0);
+    }
+    
+    .login-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .button-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .loading-spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .additional-options {
+      margin-top: 2rem;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--secondary-200);
+    }
+    
+    .help-text {
+      font-size: 0.875rem;
+      color: var(--secondary-600);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--secondary-500);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+    }
+    
+    /* Notification System */
+    .notification {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      max-width: 400px;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    .notification.success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success-500);
+    }
+    
+    .notification.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: var(--error-500);
+    }
+    
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .notification-icon {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .notification-text {
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+    
+    /* Form Validation States */
+    .form-input.error {
+      border-color: var(--error-500);
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+    }
+    
+    .form-input.success {
+      border-color: var(--success-500);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+    }
+    
+    .error-message {
+      font-size: 0.875rem;
+      color: var(--error-500);
+      margin-top: 0.25rem;
+      margin-left: 0.25rem;
+    }
+    
+    /* Loading State */
+    .login-form.loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .login-page {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+      
+      .brand-panel {
+        order: 2;
+        padding: 2rem;
+        min-height: 200px;
+      }
+      
+      .college-logo {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .college-name {
+        font-size: 1.875rem;
+      }
+      
+      .brand-features {
+        display: none;
+      }
+      
+      .login-panel {
+        order: 1;
+        padding: 2rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      body {
+        padding: 0.5rem;
+      }
+      
+      .login-page {
+        border-radius: 16px;
+      }
+      
+      .brand-panel {
+        padding: 1.5rem;
+        min-height: 150px;
+      }
+      
+      .college-name {
+        font-size: 1.5rem;
+      }
+      
+      .college-subtitle {
+        font-size: 1rem;
+      }
+      
+      .login-panel {
+        padding: 1.5rem;
+      }
+      
+      .login-title {
+        font-size: 1.5rem;
+      }
+      
+      .notification {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+      }
+    }
+    
+    /* Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+      .login-panel {
+        background: rgba(30, 30, 30, 0.95);
+      }
+      
+      .login-title {
+        color: var(--secondary-100);
+      }
+      
+      .login-subtitle {
+        color: var(--secondary-400);
+      }
+      
+      .form-label {
+        color: var(--secondary-300);
+      }
+      
+      .form-input {
+        background: rgba(40, 40, 40, 0.8);
+        border-color: var(--secondary-700);
+        color: var(--secondary-100);
+      }
+      
+      .form-input::placeholder {
+        color: var(--secondary-500);
+      }
+    }
+    
+    /* Accessibility Improvements */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Focus Indicators */
+    .login-button:focus-visible,
+    .password-toggle:focus-visible {
+      outline: 2px solid var(--primary-600);
+      outline-offset: 2px;
+    }
+    
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+      .form-input {
+        border-width: 3px;
+      }
+      
+      .login-button {
+        border: 3px solid transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Background Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Main Login Container -->
+  <div class="login-page">
+    <!-- Left Panel - Branding -->
+    <div class="brand-panel">
+      <div class="college-logo-container">
+        <img src="https://via.placeholder.com/120x120/6366f1/ffffff?text=SCRCE" alt="Sir C.R. Reddy College Logo" class="college-logo" />
+      </div>
+      
+      <div class="brand-content">
+        <h1 class="college-name">Sir C.R. Reddy College</h1>
+        <p class="college-subtitle">Excellence in Engineering Education</p>
+        
+        <div class="brand-features">
+          <div class="feature-item">
+            <i data-lucide="shield-check" class="feature-icon"></i>
+            <span class="feature-text">Secure Admin Portal</span>
+          </div>
+          <div class="feature-item">
+            <i data-lucide="database" class="feature-icon"></i>
+            <span class="feature-text">Student Result Management</span>
+          </div>
+          <div class="feature-item">
+            <i data-lucide="trending-up" class="feature-icon"></i>
+            <span class="feature-text">Real-time Analytics</span>
+          </div>
+          <div class="feature-item">
+            <i data-lucide="users" class="feature-icon"></i>
+            <span class="feature-text">Training & Placement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel - Login Form -->
+    <div class="login-panel">
+      <div class="login-header">
+        <h2 class="login-title">Welcome Back</h2>
+        <p class="login-subtitle">Sign in to your admin account</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <div class="input-container">
+            <i data-lucide="mail" class="input-icon"></i>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="admin@scrreddy.edu.in"
+              required
+              autocomplete="email"
+              aria-describedby="email-error"
+            />
+          </div>
+          <div id="email-error" class="error-message" style="display: none;"></div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-container">
+            <i data-lucide="lock" class="input-icon"></i>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input" 
+              placeholder="Enter your password"
+              required
+              autocomplete="current-password"
+              aria-describedby="password-error"
+            />
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+              <i data-lucide="eye" class="password-toggle-icon" id="passwordToggleIcon"></i>
+            </button>
+          </div>
+          <div id="password-error" class="error-message" style="display: none;"></div>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="forgot-password">
+          <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+        </div>
+
+        <!-- Login Button -->
+        <button type="submit" class="login-button" id="loginButton">
+          <div class="button-content">
+            <div class="loading-spinner" id="loadingSpinner"></div>
+            <span id="buttonText">Sign In to Portal</span>
+            <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+          </div>
+        </button>
+
+        <!-- Additional Options -->
+        <div class="additional-options">
+          <p class="help-text">Need help accessing your account?</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i data-lucide="phone" class="contact-icon"></i>
+              <span>Support: +91 8842 123456</span>
+            </div>
+            <div class="contact-item">
+              <i data-lucide="mail" class="contact-icon"></i>
+              <span>admin@scrreddy.edu.in</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Container -->
+  <div id="notification" class="notification">
+    <div class="notification-content">
+      <i id="notificationIcon" class="notification-icon"></i>
+      <span id="notificationText" class="notification-text"></span>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Professional login form handler for Sir C.R. Reddy College
+    const loginForm = document.getElementById('loginForm');
+    const loginButton = document.getElementById('loginButton');
+    const buttonText = document.getElementById('buttonText');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordToggleIcon = document.getElementById('passwordToggleIcon');
+    
+    // Password visibility toggle
+    passwordToggle.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      
+      // Update icon
+      passwordToggleIcon.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
+      lucide.createIcons();
+    });
+    
+    // Enhanced notification system
+    function showNotification(message, type = 'info') {
+      const notification = document.getElementById('notification');
+      const notificationIcon = document.getElementById('notificationIcon');
+      const notificationText = document.getElementById('notificationText');
+      
+      // Icons for different message types
+      const icons = {
+        success: 'check-circle',
+        error: 'x-circle',
+        warning: 'alert-triangle',
+        info: 'info'
+      };
+      
+      // Update notification content
+      notificationIcon.setAttribute('data-lucide', icons[type]);
+      notificationText.textContent = message;
+      
+      // Update notification styling
+      notification.className = `notification ${type}`;
+      notification.classList.add('show');
+      
+      // Recreate icons
+      lucide.createIcons();
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 5000);
+    }
+
+    // Loading state management
+    function setLoadingState(isLoading) {
+      if (isLoading) {
+        loginButton.disabled = true;
+        loginForm.classList.add('loading');
+        buttonText.textContent = 'Signing In...';
+        loadingSpinner.style.display = 'block';
+      } else {
+        loginButton.disabled = false;
+        loginForm.classList.remove('loading');
+        buttonText.textContent = 'Sign In to Portal';
+        loadingSpinner.style.display = 'none';
+      }
+    }
+
+    // Real-time form validation
+    function validateField(input, validationFn) {
+      const value = input.value.trim();
+      const isValid = validationFn(value);
+      const errorElement = document.getElementById(input.id + '-error');
+      
+      if (value && !isValid) {
+        input.classList.add('error');
+        input.classList.remove('success');
+        if (errorElement) {
+          errorElement.style.display = 'block';
+          errorElement.textContent = getErrorMessage(input.id, value);
+        }
+      } else if (value && isValid) {
+        input.classList.add('success');
+        input.classList.remove('error');
+        if (errorElement) {
+          errorElement.style.display = 'none';
+        }
+      } else {
+        input.classList.remove('error', 'success');
+        if (errorElement) {
+          errorElement.style.display = 'none';
+        }
+      }
+      
+      return isValid;
+    }
+    
+    function getErrorMessage(fieldId, value) {
+      switch (fieldId) {
+        case 'email':
+          return 'Please enter a valid email address';
+        case 'password':
+          return 'Password must be at least 6 characters long';
+        default:
+          return 'Please check this field';
+      }
+    }
+    
+    function validateForm() {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isEmailValid = validateField(emailInput, (value) => emailRegex.test(value));
+      
+      // Password validation
+      const isPasswordValid = validateField(passwordInput, (value) => value.length >= 6);
+      
+      const isFormValid = isEmailValid && isPasswordValid && email && password;
+      
+      // Update button state
+      if (isFormValid) {
+        loginButton.style.opacity = '1';
+        loginButton.style.transform = 'none';
+      } else {
+        loginButton.style.opacity = '0.7';
+      }
+      
+      return isFormValid;
+    }
+    
+    // Input event listeners for real-time validation
+    emailInput.addEventListener('input', validateForm);
+    passwordInput.addEventListener('input', validateForm);
+    emailInput.addEventListener('blur', validateForm);
+    passwordInput.addEventListener('blur', validateForm);
+    
+    // Forgot password functionality
+    function showForgotPassword() {
+      showNotification('Please contact IT support at admin@scrreddy.edu.in for password reset assistance.', 'info');
+    }
+    
+    // Enhanced form submission with better error handling
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+      
+      // Client-side validation
+      if (!validateForm()) {
+        if (!email) {
+          showNotification('Please enter your email address', 'error');
+          emailInput.focus();
+          return;
+        }
+        if (!email.includes('@')) {
+          showNotification('Please enter a valid email address', 'error');
+          emailInput.focus();
+          return;
+        }
+        if (!password || password.length < 6) {
+          showNotification('Password must be at least 6 characters long', 'error');
+          passwordInput.focus();
+          return;
+        }
+      }
+      
+      setLoadingState(true);
+      
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ 
+            email: email, 
+            password: password 
+          })
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          showNotification('Welcome! Redirecting to dashboard...', 'success');
+          
+          // Smooth transition to dashboard
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 1500);
+          return;
+          
+        } else {
+          let errorMessage = 'Authentication failed. Please check your credentials.';
+          
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          } catch (e) {
+            // Use default error message
+          }
+          
+          showNotification(errorMessage, 'error');
+          
+          // Add shake effect to form
+          loginForm.style.animation = 'shake 0.5s ease-in-out';
+          setTimeout(() => {
+            loginForm.style.animation = '';
+          }, 500);
+        }
+        
+      } catch (error) {
+        console.error('Login error:', error);
+        showNotification('Connection error. Please check your internet connection and try again.', 'error');
+      } finally {
+        setLoadingState(false);
+      }
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Enter key submits form
+      if (e.key === 'Enter' && (emailInput === document.activeElement || passwordInput === document.activeElement)) {
+        e.preventDefault();
+        loginForm.dispatchEvent(new Event('submit'));
+      }
+      
+      // Escape key clears notifications
+      if (e.key === 'Escape') {
+        const notification = document.getElementById('notification');
+        if (notification.classList.contains('show')) {
+          notification.classList.remove('show');
+        }
+      }
+    });
+    
+    // Auto-focus email input on page load
+    window.addEventListener('load', () => {
+      emailInput.focus();
+      validateForm();
+    });
+    
+    // Add shake animation
+    const shakeAnimation = `
+      @keyframes shake {
+        10%, 90% { transform: translate3d(-1px, 0, 0); }
+        20%, 80% { transform: translate3d(2px, 0, 0); }
+        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+        40%, 60% { transform: translate3d(4px, 0, 0); }
+      }
+    `;
+    
+    const style = document.createElement('style');
+    style.textContent = shakeAnimation;
+    document.head.appendChild(style);
+    
+    // Security: Clear sensitive data on page unload
+    window.addEventListener('beforeunload', () => {
+      passwordInput.value = '';
+    });
+    
+    // Initialize form validation
+    validateForm();
+    
+    console.log('Sir C.R. Reddy College - Modern Admin Portal initialized');
+  </script>
+
+</body>
+</html>

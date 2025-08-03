@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-02T11:31:31.713936",
+    "total_students": 1805,
+    "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+    "processing_status": "completed",
+    "upload_id": "upload_20250802_111910"
+  },
+  "students": [
+    {
+      "student_id": "17B81A0106",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-02",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621011",
+          "subject": "PROBABILITY AND STATISTICS",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621011",
+          "subject": "PROBABILITY AND STATISTICS",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "year": "Unknown",
+      "examType": "regular",
+      "availableSemesters": [
+        "regular"
+      ],
+      "availableExamTypes": [
+        "regular"
+      ],
+      "format": "jntuk",
+      "uploadId": "jntuk_regular_20250802_111910",
+      "attempts": 0,
+      "uploadedAt": 

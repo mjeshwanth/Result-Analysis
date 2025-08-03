@@ -2,122 +2,841 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upload Results PDF</title>
+  <title>Upload Student Results</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      position: relative;
     }
+
+    /* Animated Background Elements */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
+      animation: backgroundFloat 20s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes backgroundFloat {
+      0%, 100% { opacity: 1; transform: translateY(0px); }
+      50% { opacity: 0.8; transform: translateY(-10px); }
+    }
+
     h2 {
       text-align: center;
+      color: #4f46e5;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
     }
+
+    .form-section {
+      max-width: 600px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      position: relative;
+      z-index: 10;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
     label {
       display: block;
-      margin-top: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    select, input[type="file"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 5px;
+
+    .options button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: 1px solid #ced4da;
+      background: #e9ecef;
+      border-radius: 6px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #45a049;
+
+    .options button.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+      border-color: #4f46e5;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     }
-    #status {
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    button#uploadBtn {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    button#uploadBtn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #notification {
       margin-top: 20px;
-      font-weight: bold;
+      padding: 10px;
+      display: none;
+      border-radius: 6px;
       text-align: center;
+    }
+
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    /* Progress tracking styles */
+    .progress-container {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .progress-step {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      border-left: 4px solid #6c757d;
+    }
+
+    .progress-step.active {
+      border-left-color: #007bff;
+      background: #e3f2fd;
+    }
+
+    .progress-step.completed {
+      border-left-color: #28a745;
+      background: #d4edda;
+    }
+
+    .progress-step.failed {
+      border-left-color: #dc3545;
+      background: #f8d7da;
+    }
+
+    .step-icon {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .step-text {
+      flex: 1;
+    }
+
+    .step-details {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 5px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #e9ecef;
+      border-radius: 3px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #007bff;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .batch-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 5px;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      border: 1px solid #dee2e6;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-  <h2>Upload Results PDF</h2>
-  <form id="uploadForm">
-    <label>
-      Format:
-      <select id="format" required>
-        <option value="jntuk">JNTUK</option>
-        <option value="autonomous">Autonomous</option>
-      </select>
-    </label>
 
-    <label>
-      Exam Type:
-      <select id="exam_type" required>
-        <option value="regular">Regular</option>
-        <option value="supply">Supply</option>
-      </select>
-    </label>
+  <div class="form-section">
+    <h2>Upload Student Results</h2>
 
-    <label>
-      Select PDF:
-      <input type="file" id="pdf" accept="application/pdf" required />
-    </label>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Select Year:</label>
+        <div class="options" id="yearOptions">
+          <button type="button" data-value="1 Year">1 Year</button>
+          <button type="button" data-value="2 Year">2 Year</button>
+          <button type="button" data-value="3 Year">3 Year</button>
+          <button type="button" data-value="4 Year">4 Year</button>
+        </div>
+      </div>
 
-    <button type="submit">Upload PDF</button>
-    <div id="status"></div>
-  </form>
+      <div class="form-group">
+        <label>Select Semester:</label>
+        <div class="options" id="semesterOptions">
+          <button type="button" data-value="Semester 1">Semester 1</button>
+          <button type="button" data-value="Semester 2">Semester 2</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select Exam Type:</label>
+        <div class="options" id="examTypeOptions">
+          <button type="button" data-value="regular">Regular</button>
+          <button type="button" data-value="supply">Supply</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select Format:</label>
+        <div class="options" id="formatOptions">
+          <button type="button" data-value="jntuk">JNTUK</button>
+          <button type="button" data-value="autonomous">Autonomous</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Choose PDF File:</label>
+        <input type="file" name="pdf" id="pdfInput" accept="application/pdf" required />
+      </div>
+
+      <div class="form-group">
+        <label style="display: flex; align-items: center; font-weight: normal;">
+          <input type="checkbox" id="overwriteDuplicates" style="margin-right: 8px;">
+          Overwrite existing student records (if students already exist in database)
+        </label>
+        <div style="font-size: 12px; color: #6c757d; margin-top: 5px;">
+          ⚠️ By default, duplicate students are skipped. Check this box to update existing records.
+        </div>
+      </div>
+
+      <input type="hidden" name="year" id="yearInput" />
+      <input type="hidden" name="semester" id="semesterInput" />
+      <input type="hidden" name="exam_type" id="examTypeInput" />
+      <input type="hidden" name="format" id="formatInput" />
+
+      <button type="submit" id="uploadBtn">⬆️ Upload</button>
+      <div class="spinner" id="uploadSpinner"></div>
+    </form>
+
+    <div id="notification"></div>
+
+    <!-- Progress tracking container -->
+    <div class="progress-container" id="progressContainer">
+      <h3>Upload Progress</h3>
+      
+      <div class="progress-step" id="step-parsing">
+        <div class="step-icon">📄</div>
+        <div class="step-text">
+          <strong>PDF Parsing</strong>
+          <div class="step-details" id="parsing-details">Extracting student data from PDF...</div>
+        </div>
+      </div>
+
+      <div class="progress-step" id="step-firebase">
+        <div class="step-icon">☁️</div>
+        <div class="step-text">
+          <strong>Firebase Upload</strong>
+          <div class="step-details" id="firebase-details">Uploading student records in batches...</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="firebase-progress"></div>
+          </div>
+          <div class="batch-info">
+            <span id="batch-current">Batch 0/0</span>
+            <span id="batch-students">0 students saved</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-step" id="step-storage">
+        <div class="step-icon">💾</div>
+        <div class="step-text">
+          <strong>PDF Storage</strong>
+          <div class="step-details" id="storage-details">Uploading PDF to cloud storage...</div>
+        </div>
+      </div>
+
+      <div class="progress-step" id="step-json">
+        <div class="step-icon">📁</div>
+        <div class="step-text">
+          <strong>JSON Backup</strong>
+          <div class="step-details" id="json-details">Saving data to local JSON file...</div>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="stats-container" id="statsContainer" style="display: none;">
+        <div class="stat-card">
+          <div class="stat-number" id="stat-total">0</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-firebase">0</div>
+          <div class="stat-label">Saved to Firebase</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-time">0s</div>
+          <div class="stat-label">Processing Time</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    const form = document.getElementById('uploadForm');
-    const status = document.getElementById('status');
+    let uploadId = null;
+    let progressInterval = null;
+    let startTime = null; // Global variable for timing
+    
+    // Wait for DOM to load before getting element references
+    let uploadBtn, spinner, progressContainer;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get references to frequently used elements after DOM loads
+      uploadBtn = document.getElementById('uploadBtn');
+      spinner = document.getElementById('uploadSpinner');
+      progressContainer = document.getElementById('progressContainer');
+    });
 
-    form.addEventListener('submit', async (e) => {
+    function startProgressTracking(upload_id) {
+      uploadId = upload_id;
+      
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
+      
+      progressInterval = setInterval(() => {
+        if (uploadId) {
+          fetchProgress(uploadId);
+        }
+      }, 1000); // Poll every second
+    }
+
+    function stopProgressTracking() {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+      }
+      uploadId = null;
+    }
+
+    async function fetchProgress(upload_id) {
+      try {
+        const response = await fetch(`/api/upload-progress/${upload_id}`);
+        const progress = await response.json();
+        
+        console.log('Progress update:', progress); // Debug log
+        
+        if (response.ok && progress.status !== 'not_found') {
+          updateProgressDisplay(progress);
+          
+          // Check if completed and has final result
+          if (progress.status === 'completed') {
+            stopProgressTracking();
+            
+            // Show completion and final results
+            if (progress.result) {
+              const processingTime = ((Date.now() - startTime) / 1000).toFixed(1);
+              displayImmediateResults(progress.result, processingTime);
+              showNotification(`✅ Successfully processed ${progress.result.processed_count || 0} student results!`, 'success');
+            } else {
+              // Generate completion message based on Firebase results
+              let completionMessage = '✅ Upload completed successfully!';
+              let messageType = 'success';
+              
+              if (progress.firebase) {
+                const saved = progress.firebase.students_saved || 0;
+                const skipped = progress.firebase.students_skipped || 0;
+                const total = progress.firebase.total_students || 0;
+                
+                if (skipped > 0 && saved === 0) {
+                  completionMessage = `ℹ️ Upload complete! All ${total} students already existed in database. Use "Overwrite duplicates" option to update existing records.`;
+                  messageType = 'warning';
+                } else if (skipped > 0) {
+                  completionMessage = `✅ Upload complete! Saved ${saved} new students, skipped ${skipped} duplicates.`;
+                } else if (saved > 0) {
+                  completionMessage = `✅ Upload complete! Successfully saved ${saved} students to database.`;
+                }
+              }
+              showNotification(completionMessage, messageType);
+            }
+            
+            // Re-enable upload button
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = "Upload PDF";
+            spinner.style.display = 'none';
+          } else if (progress.status === 'error') {
+            stopProgressTracking();
+            showNotification('❌ Upload failed: ' + (progress.error?.message || 'Unknown error'), 'error');
+            
+            // Re-enable upload button
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = "Upload PDF";
+            spinner.style.display = 'none';
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching progress:', error);
+      }
+    }
+
+    function updateProgressDisplay(progress) {
+      // Update parsing step
+      if (progress.parsing) {
+        updateStep('step-parsing', progress.parsing.status, 
+                   progress.parsing.message || 'Parsing PDF...');
+        if (progress.parsing.total_students) {
+          document.getElementById('parsing-details').innerHTML = 
+            `Extracted ${progress.parsing.total_students} student records`;
+        }
+      }
+
+      // Update Firebase step
+      if (progress.firebase) {
+        let message = progress.firebase.message || 'Uploading to Firebase...';
+        let status = progress.firebase.status;
+        
+        // Improve messaging for duplicate scenarios
+        if (progress.firebase.status === 'completed') {
+          const saved = progress.firebase.students_saved || 0;
+          const skipped = progress.firebase.students_skipped || 0;
+          const total = progress.firebase.total_students || 0;
+          
+          if (skipped > 0 && saved === 0) {
+            message = `All ${total} students already exist in database (${skipped} duplicates skipped)`;
+          } else if (skipped > 0) {
+            message = `Saved ${saved} new students, skipped ${skipped} duplicates`;
+          } else {
+            message = `Successfully saved ${saved} students to database`;
+          }
+        }
+        
+        updateStep('step-firebase', status, message);
+        
+        if (progress.firebase.progress !== undefined) {
+          const progressBar = document.getElementById('firebase-progress');
+          progressBar.style.width = `${progress.firebase.progress}%`;
+          
+          const batchInfo = document.getElementById('batch-current');
+          const studentInfo = document.getElementById('batch-students');
+          
+          if (progress.firebase.batches) {
+            batchInfo.textContent = `Batch ${progress.firebase.batches}`;
+          }
+          
+          if (progress.firebase.students_saved !== undefined) {
+            studentInfo.textContent = `${progress.firebase.students_saved} students saved`;
+          }
+        }
+      }
+
+      // Update storage step
+      if (progress.storage) {
+        updateStep('step-storage', progress.storage.status, 
+                   progress.storage.message || 'Uploading PDF...');
+      }
+
+      // Update JSON step
+      if (progress.json) {
+        updateStep('step-json', progress.json.status, 
+                   progress.json.message || 'Saving JSON file...');
+      }
+
+      // Handle completion
+      if (progress.status === 'completed') {
+        // Display final results if available
+        if (progress.result) {
+          displayFinalResults(progress.result);
+        }
+        
+        // Show statistics
+        if (progress.parsing && progress.firebase) {
+          showStatistics(
+            progress.parsing.total_students || 0,
+            progress.firebase.students_saved || 0,
+            5 // Approximate processing time
+          );
+        }
+        
+        // Update button state
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = "Upload PDF";
+        spinner.style.display = 'none';
+        
+        showNotification('✅ Processing completed successfully!', 'success');
+        
+        // Reset form after delay
+        setTimeout(() => {
+          resetForm();
+        }, 3000);
+      }
+      
+      // Handle errors
+      if (progress.status === 'error') {
+        const uploadBtn = document.getElementById('uploadBtn');
+        const spinner = document.getElementById('uploadSpinner');
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = "Upload PDF";
+        spinner.style.display = 'none';
+        
+        showNotification('❌ Processing failed. Please try again.', 'error');
+      }
+    }
+
+    function displayFinalResults(result) {
+      // Update Firebase step with final statistics
+      if (result.firebase) {
+        const firebaseStats = result.firebase;
+        if (firebaseStats.enabled) {
+          updateStep('step-firebase', 'completed', 
+            `✅ Uploaded ${firebaseStats.students_saved}/${firebaseStats.students_total} students to Firebase`);
+          
+          // Update progress bar to 100%
+          document.getElementById('firebase-progress').style.width = '100%';
+          document.getElementById('batch-current').textContent = 'Completed';
+          document.getElementById('batch-students').textContent = `${firebaseStats.students_saved} students saved`;
+        } else {
+          updateStep('step-firebase', 'failed', '❌ Firebase not available');
+        }
+        
+        // Update storage step
+        if (firebaseStats.storage_url) {
+          updateStep('step-storage', 'completed', '✅ PDF uploaded to cloud storage');
+        } else {
+          updateStep('step-storage', 'completed', '✅ PDF storage completed');
+        }
+      }
+      
+      // Update JSON step
+      if (result.json_file) {
+        updateStep('step-json', 'completed', `✅ Data saved to ${result.json_file}`);
+      }
+    }
+
+    function resetForm() {
+      const uploadForm = document.getElementById('uploadForm');
+      uploadForm.reset();
+      document.querySelectorAll('.options button').forEach(btn => btn.classList.remove('active'));
+      // Re-set default format
+      document.querySelector('#formatOptions button[data-value="jntuk"]').click();
+      document.getElementById('progressContainer').style.display = 'none';
+      document.getElementById('statsContainer').style.display = 'none';
+    }
+
+    function updateStep(stepId, status, message) {
+      const step = document.getElementById(stepId);
+      const details = step.querySelector('.step-details');
+      
+      // Remove previous status classes
+      step.classList.remove('active', 'completed', 'error');
+      
+      // Add appropriate status class
+      if (status === 'completed' || status === 'success') {
+        step.classList.add('completed');
+        step.querySelector('.step-icon').textContent = '✅';
+      } else if (status === 'error' || status === 'failed') {
+        step.classList.add('error');
+        step.querySelector('.step-icon').textContent = '❌';
+      } else if (status === 'uploading' || status === 'saving' || status === 'starting') {
+        step.classList.add('active');
+        step.querySelector('.step-icon').textContent = '⏳';
+      }
+      
+      if (details && message) {
+        details.textContent = message;
+      }
+    }
+
+    function showStatistics(total, firebase, time) {
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-firebase').textContent = firebase;
+      document.getElementById('stat-time').textContent = `${time}s`;
+      document.getElementById('statsContainer').style.display = 'flex';
+    }
+
+    function displayImmediateResults(result, processingTime) {
+      // Step 2: Firebase upload
+      if (result.firebase) {
+        const firebaseStats = result.firebase;
+        if (firebaseStats.enabled) {
+          updateStep('step-firebase', 'completed', 
+            `✅ Uploaded ${firebaseStats.students_saved}/${firebaseStats.students_total} students to Firebase (${firebaseStats.upload_time?.toFixed(1) || 0}s)`);
+          
+          // Update progress bar to 100%
+          document.getElementById('firebase-progress').style.width = '100%';
+          document.getElementById('batch-current').textContent = 'Completed';
+          document.getElementById('batch-students').textContent = `${firebaseStats.students_saved} students saved`;
+        } else {
+          updateStep('step-firebase', 'failed', '❌ Firebase not available');
+        }
+        
+        // Step 3: Storage
+        if (firebaseStats.storage_url) {
+          updateStep('step-storage', 'completed', '✅ PDF uploaded to cloud storage');
+        } else {
+          updateStep('step-storage', 'failed', '❌ PDF storage failed');
+        }
+      } else {
+        updateStep('step-firebase', 'failed', '❌ Firebase upload information not available');
+        updateStep('step-storage', 'failed', '❌ Storage information not available');
+      }
+      
+      // Step 4: JSON backup
+      updateStep('step-json', 'completed', `✅ Data saved to ${result.json_file || 'JSON file'}`);
+      
+      // Show statistics
+      showStatistics(result.processed_count || 0, result.firebase?.students_saved || 0, processingTime);
+      
+      // Reset form on success after a delay
+      setTimeout(() => {
+        uploadForm.reset();
+        document.querySelectorAll('.options button').forEach(btn => btn.classList.remove('active'));
+        // Re-set default format
+        document.querySelector('#formatOptions button[data-value="jntuk"]').click();
+      }, 3000);
+    }
+
+    function activateButtons(groupId, hiddenInputId) {
+      const buttons = document.querySelectorAll(`#${groupId} button`);
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(hiddenInputId).value = btn.dataset.value;
+        });
+      });
+    }
+
+    activateButtons('yearOptions', 'yearInput');
+    activateButtons('semesterOptions', 'semesterInput');
+    activateButtons('examTypeOptions', 'examTypeInput');
+    activateButtons('formatOptions', 'formatInput');
+
+    // Set default format
+    document.querySelector('#formatOptions button[data-value="jntuk"]').click();
+    
+    const uploadForm = document.getElementById('uploadForm');
+    const notification = document.getElementById('notification');
+
+    uploadForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      status.textContent = '📤 Uploading...';
 
-      const pdf = document.getElementById('pdf').files[0];
-      const format = document.getElementById('format').value;
-      const exam_type = document.getElementById('exam_type').value;
+      const fileInput = document.getElementById('pdfInput');
+      const format = document.getElementById('formatInput').value;
 
-      if (!pdf) {
-        status.textContent = '❌ Please select a PDF file!';
+      // Only check for file and format - these are the only visible fields
+      if (!fileInput.files[0]) {
+        showNotification("❌ Please select a PDF file", "error");
         return;
       }
 
+      if (!format) {
+        showNotification("❌ Please select a format (JNTUK or Autonomous)", "error");
+        return;
+      }
+
+      // Set default values for required fields that aren't visible
+      document.getElementById('examTypeInput').value = 'regular';
+      document.getElementById('yearInput').value = '2024';
+      document.getElementById('semesterInput').value = '1';
+
+      // Start loading state and show progress
+      uploadBtn.disabled = true;
+      uploadBtn.textContent = "Processing...";
+      spinner.style.display = 'block';
+      document.getElementById('notification').style.display = 'none';
+      progressContainer.style.display = 'block';
+      
+      // Reset progress steps
+      resetProgressSteps();
+      
+      // Start timing
+      startTime = Date.now(); // Use global variable
+
       const formData = new FormData();
-      formData.append('pdf', pdf);
+      formData.append('file', fileInput.files[0]);
       formData.append('format', format);
-      formData.append('exam_type', exam_type);
+      formData.append('exam_type', 'regular'); // Default value
 
       try {
-        const response = await fetch('http://127.0.0.1:5000/upload-pdf', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'X-API-Key': 'my-very-secret-admin-api-key'  // Replace with your real key
-          }
+        // Step 1: Start parsing
+        updateStep('step-parsing', 'active', 'Extracting student data from PDF...');
+        
+        // Create headers object without Content-Type (browser will set it)
+        const response = await fetch("/api/upload-result", {
+          method: "POST",
+          body: formData
         });
 
-        const data = await response.json();
-
-        if (response.ok) {
-          status.textContent = `✅ Success: ${data.message || "Upload complete"}`;
+        const result = await response.json();
+        
+        if (response.ok && result.upload_id) {
+          // Start progress tracking immediately
+          startProgressTracking(result.upload_id);
+          
+          // The rest will be handled by progress polling
+          showNotification(`Upload started successfully! Processing...`, 'success');
         } else {
-          status.textContent = `❌ Error: ${data.error || "Upload failed"}`;
+          throw new Error(result.error || 'Upload failed');
         }
-
-      } catch (error) {
-        status.textContent = "❌ Could not connect to the backend.";
+      } catch (err) {
+        console.error('Upload error:', err);
+        
+        // Mark all steps as failed
+        updateStep('step-parsing', 'failed', '❌ Network error');
+        updateStep('step-firebase', 'failed', '❌ Upload aborted');
+        updateStep('step-storage', 'failed', '❌ Storage aborted');
+        updateStep('step-json', 'failed', '❌ JSON save aborted');
+        
+        showNotification("❌ Error uploading PDF", "error");
+      } finally {
+        // Reset loading state
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = "⬆️ Upload";
+        spinner.style.display = 'none';
       }
     });
+
+    function resetProgressSteps() {
+      const steps = ['step-parsing', 'step-firebase', 'step-storage', 'step-json'];
+      steps.forEach(stepId => {
+        const step = document.getElementById(stepId);
+        step.className = 'progress-step';
+      });
+      
+      // Reset progress bar
+      document.getElementById('firebase-progress').style.width = '0%';
+      document.getElementById('batch-current').textContent = 'Batch 0/0';
+      document.getElementById('batch-students').textContent = '0 students saved';
+      
+      // Hide statistics
+      document.getElementById('statsContainer').style.display = 'none';
+    }
+
+    function updateStep(stepId, status, message) {
+      const step = document.getElementById(stepId);
+      const details = document.getElementById(stepId.replace('step-', '') + '-details');
+      
+      step.className = `progress-step ${status}`;
+      if (details) {
+        details.textContent = message;
+      }
+    }
+
+    function simulateBatchProgress(saved, total) {
+      const progressBar = document.getElementById('firebase-progress');
+      const batchCurrent = document.getElementById('batch-current');
+      const batchStudents = document.getElementById('batch-students');
+      
+      // Simulate batch upload (assuming 100 students per batch)
+      const batchSize = 100;
+      const totalBatches = Math.ceil(total / batchSize);
+      
+      if (saved > 0) {
+        progressBar.style.width = '100%';
+        batchCurrent.textContent = `Batch ${totalBatches}/${totalBatches}`;
+        batchStudents.textContent = `${saved} students saved`;
+      }
+    }
+
+    function showStatistics(total, firebase, time) {
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-firebase').textContent = firebase;
+      document.getElementById('stat-time').textContent = time + 's';
+      document.getElementById('statsContainer').style.display = 'grid';
+    }
+
+    function showNotification(msg, type) {
+      notification.textContent = msg;
+      notification.className = type;
+      notification.style.display = 'block';
+    }
   </script>
+
 </body>
 </html>

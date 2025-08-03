@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notice Board</title>
+    <!-- No Firebase client SDKs needed as we're using server-side only -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { opacity: 1; transform: translateY(0px); }
+            50% { opacity: 0.8; transform: translateY(-10px); }
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            height: fit-content;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 1rem;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: #003366;
+            color: white;
+        }
+
+        .filters {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .content-area {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background: #003366;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            margin-left: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            margin-left: 0.5rem;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 0.25rem;
+        }
+
+        .notice-item {
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .notice-item h3 {
+            margin-bottom: 0.5rem;
+            color: #003366;
+        }
+
+        .notice-metadata {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .notice-attachments {
+            margin-top: 1rem;
+        }
+
+        .notice-attachments a {
+            color: #003366;
+            text-decoration: none;
+        }
+
+        .notification {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .notice-form {
+            display: none;
+        }
+
+        .notice-form.active {
+            display: block;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .option-btn {
+            padding: 10px 20px;
+            border: 1px solid #ced4da;
+            background: #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .option-btn:hover {
+            background: #dee2e6;
+        }
+
+        .option-btn.active {
+            background: #003366;
+            color: white;
+            border-color: #003366;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .option-btn {
+            padding: 10px 20px;
+            border: 1px solid #ced4da;
+            background: #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .option-btn:hover {
+            background: #dee2e6;
+        }
+
+        .option-btn.active {
+            background: #003366;
+            color: white;
+            border-color: #003366;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            transition: border-color 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: #003366;
+        }
+
+        .upload-area.drag-over {
+            border-color: #003366;
+            background-color: #f0f8ff;
+        }
+
+        .file-list {
+            margin-top: 1rem;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #003366;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .filters-row {
+            display: flex;
+            gap: 1rem;
+            align-items: end;
+            margin-bottom: 2rem;
+        }
+
+        .results-tabs {
+            margin-bottom: 1rem;
+        }
+
+        .results-tabs button {
+            margin-right: 0.5rem;
+        }
+
+        .results-tabs button.active {
+            background: #003366;
+            color: white;
+        }
+
+        .files-grid, .student-results-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .file-card, .student-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .subjects {
+            margin-top: 1rem;
+        }
+
+        .subjects > div {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .subjects > div > div {
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkbox-label:hover {
+            background-color: #f8f9fa;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkbox-label {
+            background-color: #e3f2fd;
+            border-color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Student Result Analysis System</h1>
+        <div>
+            <button class="btn btn-primary" onclick="showSection('notices'); showNoticeForm()">Create Notice</button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showSection('notices')" class="active" id="notices-nav">Notice Board</a></li>
+                <li><a href="#" onclick="showSection('upload')" id="upload-nav">Upload Results</a></li>
+                <li><a href="#" onclick="showSection('results')" id="results-nav">View Results</a></li>
+            </ul>
+            
+            <div class="filters" id="notice-filters">
+                <h3>Filters</h3>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="filterCategory" onchange="loadNotices()">
+                        <option value="all">All Categories</option>
+                        <option value="exam">Exam</option>
+                        <option value="results">Results</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="filterPriority" onchange="loadNotices()">
+                        <option value="all">All Priorities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div id="notification" class="notification"></div>
+            
+            <!-- Notice Board Section -->
+            <div id="notices-section" class="section active">
+                <div id="noticeForm" class="notice-form">
+                    <h2>Create New Notice</h2>
+                    <form id="createNoticeForm">
+                        <div class="form-group">
+                            <label>Title *</label>
+                            <input type="text" id="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Content *</label>
+                            <textarea id="content" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="category">
+                                <option value="general">General</option>
+                                <option value="exam">Exam</option>
+                                <option value="results">Results</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select id="priority">
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Attachments (Optional)</label>
+                            <input type="file" id="attachments" multiple>
+                            <small style="color: #666;">You can upload multiple files (optional)</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Notice</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideNoticeForm()">Cancel</button>
+                    </form>
+                </div>
+
+                <div id="noticesList"></div>
+            </div>
+
+            <!-- Upload Results Section -->
+            <div id="upload-section" class="section">
+                <h2>Upload Student Results</h2>
+                
+                <form id="uploadResultForm">
+                    <div class="form-group">
+                        <label>Select Year:</label>
+                        <div class="options" id="yearOptions">
+                            <button type="button" class="option-btn" data-value="1 Year">1 Year</button>
+                            <button type="button" class="option-btn" data-value="2 Year">2 Year</button>
+                            <button type="button" class="option-btn" data-value="3 Year">3 Year</button>
+                            <button type="button" class="option-btn" data-value="4 Year">4 Year</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Semester(s):</label>
+                        <div class="checkbox-group" id="semesterOptions">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 1"> Semester 1
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 2"> Semester 2
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 3"> Semester 3
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 4"> Semester 4
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 5"> Semester 5
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 6"> Semester 6
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 7"> Semester 7
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="semester-checkbox" value="Semester 8"> Semester 8
+                            </label>
+                        </div>
+                        <small style="color: #666;">Select all semesters included in this PDF</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Exam Type(s):</label>
+                        <div class="checkbox-group" id="examTypeOptions">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="exam-type-checkbox" value="regular" onchange="handleExamTypeChange()"> Regular
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="exam-type-checkbox" value="supply" onchange="handleExamTypeChange()"> Supply/Supplementary
+                            </label>
+                        </div>
+                        <small style="color: #666;">Select all exam types included in this PDF</small>
+                    </div>
+
+                    <div id="supply-options" style="display: none; margin-top: 1rem; padding: 1rem; border: 1px solid #ffc107; border-radius: 4px; background-color: #fff3cd;">
+                        <h4 style="color: #856404; margin-bottom: 1rem;">📋 Supply/Supplementary Options</h4>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="generate-json" checked> Generate JSON file in temp folder
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="push-to-firebase" checked> Push to Firebase and update existing records
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="track-attempts" checked> Track attempts for each student
+                            </label>
+                        </div>
+                        <small style="color: #856404;">Supply results will match with existing student data and update with attempt tracking.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Format:</label>
+                        <div class="options" id="formatOptions">
+                            <button type="button" class="option-btn" data-value="jntuk">JNTUK</button>
+                            <button type="button" class="option-btn" data-value="autonomous">Autonomous</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Choose PDF File:</label>
+                        <input type="file" id="resultFileInput" accept=".pdf" required>
+                        <small style="color: #666;">Only PDF files are allowed</small>
+                    </div>
+
+                    <input type="hidden" id="selectedYear">
+                    <input type="hidden" id="selectedFormat">
+
+                    <div style="margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary" id="uploadResultBtn">⬆️ Upload & Process</button>
+                    </div>
+                </form>
+
+                <div id="uploadResultProgress" style="display: none; margin-top: 1rem;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="resultProgressFill"></div>
+                    </div>
+                    <p id="resultProgressText">Processing PDF and extracting student data...</p>
+                </div>
+
+                <div id="uploadResultNotification" style="margin-top: 1rem;"></div>
+            </div>
+            
+            <!-- Results Section -->
+            <div id="results-section" class="section" style="display: none;">
+                <h2>Processed Results</h2>
+                
+                <div class="filters-row" style="margin-bottom: 2rem; display: flex; gap: 1rem; align-items: end;">
+                    <div class="form-group">
+                        <label for="filter-year">Year:</label>
+                        <select id="filter-year">
+                            <option value="">All Years</option>
+                            <option value="2024-25">2024-25</option>
+                            <option value="2023-24">2023-24</option>
+                            <option value="2022-23">2022-23</option>
+                            <option value="2021-22">2021-22</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filter-format">Format:</label>
+                        <select id="filter-format">
+                            <option value="">All Formats</option>
+                            <option value="jntuk">JNTUK</option>
+                            <option value="autonomous">Autonomous</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="search-student">Student ID:</label>
+                        <input type="text" id="search-student" placeholder="Enter student ID">
+                    </div>
+                    <button onclick="loadResults()" class="btn btn-primary">Search</button>
+                    <button onclick="loadUploadedFiles()" class="btn btn-secondary">Refresh Files</button>
+                </div>
+                
+                <div class="results-tabs" style="margin-bottom: 1rem;">
+                    <button onclick="showResultsTab('files')" id="files-tab" class="btn btn-secondary">Uploaded Files</button>
+                    <button onclick="showResultsTab('students')" id="students-tab" class="btn btn-secondary">Student Results</button>
+                </div>
+                
+                <div id="files-results" class="results-content">
+                    <h3>Uploaded Files</h3>
+                    <div id="uploaded-files-list" class="files-grid">
+                        <!-- Uploaded files will be shown here -->
+                    </div>
+                </div>
+                
+                <div id="students-results" class="results-content" style="display: none;">
+                    <h3>Student Results</h3>
+                    <div id="student-results-list" class="student-results-grid">
+                        <!-- Student results will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // No Firebase client initialization needed as we're using server-side only
+
+        let selectedFiles = [];
+
+        // Handle exam type changes
+        function handleExamTypeChange() {
+            const supplyCheckbox = document.querySelector('.exam-type-checkbox[value="supply"]');
+            const supplyOptions = document.getElementById('supply-options');
+            
+            if (supplyCheckbox && supplyCheckbox.checked) {
+                supplyOptions.style.display = 'block';
+            } else {
+                supplyOptions.style.display = 'none';
+            }
+        }
+
+        // Navigation Functions
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName + '-section').style.display = 'block';
+            
+            // Update navigation
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById(sectionName + '-nav').classList.add('active');
+            
+            // Show/hide filters based on section
+            const filters = document.getElementById('notice-filters');
+            if (sectionName === 'notices') {
+                filters.style.display = 'block';
+                loadNotices(); // Load notices when switching to notices section
+            } else {
+                filters.style.display = 'none';
+            }
+            
+            // Load data for results section
+            if (sectionName === 'results') {
+                loadUploadedFiles();
+                showResultsTab('files');
+            }
+            
+            // Hide notice form when switching sections
+            if (sectionName !== 'notices') {
+                hideNoticeForm();
+            }
+        }
+
+        // File Upload Functions
+        function initializeUpload() {
+            // Initialize option button groups
+            initializeOptionButtons('yearOptions', 'selectedYear');
+            initializeOptionButtons('formatOptions', 'selectedFormat');
+            
+            // Set default format to JNTUK
+            const jntukBtn = document.querySelector('#formatOptions button[data-value="jntuk"]');
+            if (jntukBtn) {
+                jntukBtn.click();
+            }
+            
+            // Handle form submission
+            const uploadForm = document.getElementById('uploadResultForm');
+            uploadForm.addEventListener('submit', handleResultUpload);
+        }
+
+        function initializeOptionButtons(groupId, hiddenInputId) {
+            const buttons = document.querySelectorAll(`#${groupId} .option-btn`);
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all buttons in this group
+                    buttons.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Set hidden input value
+                    document.getElementById(hiddenInputId).value = btn.dataset.value;
+                });
+            });
+        }
+
+        async function handleResultUpload(e) {
+            e.preventDefault();
+            
+            const year = document.getElementById('selectedYear').value;
+            const selectedSemesters = Array.from(document.querySelectorAll('.semester-checkbox:checked')).map(cb => cb.value);
+            const selectedExamTypes = Array.from(document.querySelectorAll('.exam-type-checkbox:checked')).map(cb => cb.value);
+            const format = document.getElementById('selectedFormat').value;
+            const fileInput = document.getElementById('resultFileInput');
+            
+            // Validation
+            if (!year) {
+                showResultNotification("❌ Please select Year", "error");
+                return;
+            }
+            
+            if (selectedSemesters.length === 0) {
+                showResultNotification("❌ Please select at least one Semester", "error");
+                return;
+            }
+            
+            if (selectedExamTypes.length === 0) {
+                showResultNotification("❌ Please select at least one Exam Type", "error");
+                return;
+            }
+            
+            if (!format) {
+                showResultNotification("❌ Please select Format", "error");
+                return;
+            }
+            
+            if (!fileInput.files[0]) {
+                showResultNotification("❌ Please select a PDF file", "error");
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            if (!file.name.toLowerCase().endsWith('.pdf')) {
+                showResultNotification("❌ Only PDF files are allowed", "error");
+                return;
+            }
+            
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('year', year);
+            formData.append('semesters', JSON.stringify(selectedSemesters));
+            formData.append('exam_types', JSON.stringify(selectedExamTypes));
+            formData.append('format', format);
+            
+            // Add supply-specific options
+            if (selectedExamTypes.includes('supply')) {
+                formData.append('generate_json', document.getElementById('generate-json').checked);
+                formData.append('push_to_firebase', document.getElementById('push-to-firebase').checked);
+                formData.append('track_attempts', document.getElementById('track-attempts').checked);
+            }
+            
+            // Show progress
+            const uploadBtn = document.getElementById('uploadResultBtn');
+            const progressDiv = document.getElementById('uploadResultProgress');
+            const progressFill = document.getElementById('resultProgressFill');
+            const progressText = document.getElementById('resultProgressText');
+            
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = "Processing...";
+            progressDiv.style.display = 'block';
+            progressFill.style.width = '0%';
+            
+            try {
+                progressText.textContent = `Processing ${file.name} for ${selectedSemesters.length} semester(s) and ${selectedExamTypes.length} exam type(s)...`;
+                progressFill.style.width = '30%';
+                
+                const response = await fetch('/api/upload-result', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                progressFill.style.width = '100%';
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Enhanced success message with more details
+                    let successMessage = result.message || 'File uploaded and processed successfully!';
+                    
+                    // Add additional details if available
+                    let detailsHtml = '<div class="upload-details" style="margin-top: 10px; font-size: 14px;">';
+                    if (result.studentsExtracted) {
+                        detailsHtml += `<div>📊 Students extracted: ${result.studentsExtracted}</div>`;
+                    }
+                    if (result.studentsProcessed) {
+                        detailsHtml += `<div>✅ Students saved: ${result.studentsProcessed}</div>`;
+                    }
+                    if (result.duplicatesSkipped > 0) {
+                        detailsHtml += `<div>⚠️ Duplicates skipped: ${result.duplicatesSkipped}</div>`;
+                    }
+                    if (result.jsonGenerated && result.jsonFilePath) {
+                        detailsHtml += `<div>📁 JSON saved: ${result.jsonFilePath}</div>`;
+                    }
+                    detailsHtml += '</div>';
+                    
+                    const notificationType = result.uploadStatus === 'success' ? 'success' : 'warning';
+                    showResultNotification(`${successMessage}${detailsHtml}`, notificationType);
+                    
+                    // Reset form
+                    document.getElementById('uploadResultForm').reset();
+                    document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
+                    
+                    // Reset hidden inputs
+                    document.getElementById('selectedYear').value = '';
+                    document.getElementById('selectedFormat').value = '';
+                    
+                    // Reset checkboxes
+                    document.querySelectorAll('.semester-checkbox').forEach(cb => cb.checked = false);
+                    document.querySelectorAll('.exam-type-checkbox').forEach(cb => cb.checked = false);
+                    
+                    // Set default format again
+                    const jntukBtn = document.querySelector('#formatOptions button[data-value="jntuk"]');
+                    if (jntukBtn) {
+                        jntukBtn.click();
+                    }
+                } else {
+                    showResultNotification(`❌ ${result.error || 'Upload failed'}`, "error");
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                showResultNotification("❌ Error uploading PDF", "error");
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = "⬆️ Upload";
+                progressDiv.style.display = 'none';
+            }
+        }
+
+        function showResultNotification(message, type) {
+            const notification = document.getElementById('uploadResultNotification');
+            notification.innerHTML = `
+                <div class="notification ${type}" style="display: block;">
+                    ${message}
+                </div>
+            `;
+            
+            // Auto-hide after different durations based on type
+            const hideDelay = type === 'warning' ? 8000 : 5000; // Warning stays longer
+            setTimeout(() => {
+                notification.innerHTML = '';
+            }, hideDelay);
+        }
+        function showNoticeForm() {
+            document.getElementById('noticeForm').classList.add('active');
+        }
+
+        function hideNoticeForm() {
+            document.getElementById('noticeForm').classList.remove('active');
+            document.getElementById('createNoticeForm').reset();
+            
+            // Reset form state
+            editingNoticeId = null;
+            document.querySelector('#noticeForm h2').textContent = 'Create New Notice';
+            document.querySelector('#createNoticeForm button[type="submit"]').textContent = 'Create Notice';
+        }
+
+        // Show Notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        // Load Notices
+        async function loadNotices() {
+            const noticesList = document.getElementById('noticesList');
+            const category = document.getElementById('filterCategory').value;
+            const priority = document.getElementById('filterPriority').value;
+
+            try {
+                const response = await fetch(`/api/notices?category=${category}&priority=${priority}`);
+                const result = await response.json();
+
+                if (response.ok) {
+                    noticesList.innerHTML = '';
+                    result.notices.forEach(notice => {
+                        const noticeElement = createNoticeElement(notice);
+                        noticesList.appendChild(noticeElement);
+                    });
+                } else {
+                    throw new Error(result.error || 'Failed to load notices');
+                }
+            } catch (error) {
+                showNotification(error.message, 'error');
+            }
+        }
+
+        // Create Notice Element
+        function createNoticeElement(notice) {
+            const div = document.createElement('div');
+            div.className = 'notice-item';
+            div.innerHTML = `
+                <h3>${notice.title}</h3>
+                <p>${notice.content}</p>
+                <div class="notice-metadata">
+                    <span>Category: ${notice.category}</span>
+                    <span>Priority: ${notice.priority}</span>
+                    <span>Posted: ${new Date(notice.createdAt._seconds * 1000).toLocaleString()}</span>
+                </div>
+                ${notice.attachments && notice.attachments.length > 0 ? `
+                    <div class="notice-attachments">
+                        <strong>Attachments:</strong><br>
+                        ${notice.attachments.map(att => `
+                            <a href="${att.fileUrl}" target="_blank">${att.fileName}</a>
+                        `).join('<br>')}
+                    </div>
+                ` : ''}
+                <div style="margin-top: 1rem;">
+                    <button class="btn btn-primary" onclick="editNotice('${notice.id}', '${notice.title.replace(/'/g, "\\'")}', '${notice.content.replace(/'/g, "\\'")}', '${notice.category}', '${notice.priority}')">Edit</button>
+                    <button class="btn btn-danger" onclick="deleteNotice('${notice.id}')">Delete</button>
+                </div>
+            `;
+            return div;
+        }
+
+        // Create Notice
+        document.getElementById('createNoticeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            
+            // Add text fields
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const category = document.getElementById('category').value;
+            const priority = document.getElementById('priority').value;
+            
+            formData.append('title', title);
+            formData.append('content', content);
+            formData.append('category', category);
+            formData.append('priority', priority);
+
+            console.log('Form data before sending:', {
+                title, content, category, priority
+            });
+
+            // Add files (optional)
+            const files = document.getElementById('attachments').files;
+            for (let i = 0; i < files.length; i++) {
+                formData.append('attachments', files[i]);
+                console.log('Adding file:', files[i].name);
+            }
+
+            try {
+                console.log('Preparing to send request...');
+                
+                // Log the FormData contents
+                for (let pair of formData.entries()) {
+                    console.log(pair[0], pair[1]);
+                }
+                
+                const url = editingNoticeId ? `/api/notices/${editingNoticeId}` : '/api/notices';
+                const method = editingNoticeId ? 'PUT' : 'POST';
+                
+                console.log(`Sending ${method} request to ${url}...`);
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+
+                console.log('Response status:', response.status);
+                const result = await response.json();
+                console.log('Response data:', result);
+
+                if (response.ok) {
+                    const message = editingNoticeId ? 'Notice updated successfully!' : 'Notice created successfully!';
+                    showNotification(message, 'success');
+                    hideNoticeForm();
+                    loadNotices();
+                } else {
+                    throw new Error(result.error || 'Failed to save notice');
+                }
+            } catch (error) {
+                showNotification(error.message, 'error');
+            }
+        });
+
+        // Edit Notice
+        let editingNoticeId = null;
+
+        function editNotice(noticeId, title, content, category, priority) {
+            editingNoticeId = noticeId;
+            
+            // Fill the form with existing data
+            document.getElementById('title').value = title;
+            document.getElementById('content').value = content;
+            document.getElementById('category').value = category;
+            document.getElementById('priority').value = priority;
+            
+            // Change form title and button text
+            document.querySelector('#noticeForm h2').textContent = 'Edit Notice';
+            document.querySelector('#createNoticeForm button[type="submit"]').textContent = 'Update Notice';
+            
+            // Show the form
+            showNoticeForm();
+        }
+
+        // Delete Notice
+        async function deleteNotice(noticeId) {
+            if (!confirm('Are you sure you want to delete this notice?')) return;
+
+            try {
+                const response = await fetch(`/api/notices/${noticeId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    showNotification('Notice deleted successfully!', 'success');
+                    loadNotices();
+                } else {
+                    const result = await response.json();
+                    throw new Error(result.error || 'Failed to delete notice');
+                }
+            } catch (error) {
+                showNotification(error.message, 'error');
+            }
+        }
+
+        // Results Section Functions
+        function showResultsTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.results-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-results').style.display = 'block';
+            
+            // Update tab buttons
+            document.querySelectorAll('.results-tabs button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        async function loadUploadedFiles() {
+            try {
+                const response = await fetch('/api/uploaded-results');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayUploadedFiles(data.results);
+                } else {
+                    showNotification('Failed to load uploaded files', 'error');
+                }
+            } catch (error) {
+                console.error('Error loading uploaded files:', error);
+                showNotification('Error loading uploaded files: ' + error.message, 'error');
+            }
+        }
+
+        function displayUploadedFiles(files) {
+            const container = document.getElementById('uploaded-files-list');
+            
+            if (files.length === 0) {
+                container.innerHTML = '<p>No files uploaded yet.</p>';
+                return;
+            }
+            
+            container.innerHTML = files.map(file => `
+                <div class="file-card" style="border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; border-radius: 8px;">
+                    <h4>${file.originalName}</h4>
+                    <p><strong>Year:</strong> ${file.year} | <strong>Semester:</strong> ${file.semester}</p>
+                    <p><strong>Exam Type:</strong> ${file.examType} | <strong>Format:</strong> ${file.format}</p>
+                    <p><strong>Students Processed:</strong> ${file.studentsCount || 'N/A'}</p>
+                    <p><strong>Status:</strong> ${file.status} | <strong>Uploaded:</strong> ${new Date(file.uploadedAt._seconds * 1000).toLocaleString()}</p>
+                    <a href="${file.fileUrl}" target="_blank" class="btn btn-secondary">Download PDF</a>
+                </div>
+            `).join('');
+        }
+
+        async function loadResults() {
+            const year = document.getElementById('filter-year').value;
+            const format = document.getElementById('filter-format').value;
+            const studentId = document.getElementById('search-student').value;
+            
+            try {
+                const params = new URLSearchParams();
+                if (year) params.append('year', year);
+                if (format) params.append('format', format);
+                if (studentId) params.append('student_id', studentId);
+                
+                const response = await fetch('/api/student-results?' + params.toString());
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayStudentResults(data.results);
+                    showResultsTab('students');
+                } else {
+                    showNotification('Failed to load student results', 'error');
+                }
+            } catch (error) {
+                console.error('Error loading student results:', error);
+                showNotification('Error loading student results: ' + error.message, 'error');
+            }
+        }
+
+        function displayStudentResults(results) {
+            const container = document.getElementById('student-results-list');
+            
+            if (results.length === 0) {
+                container.innerHTML = '<p>No student results found with the selected filters.</p>';
+                return;
+            }
+            
+            container.innerHTML = results.map(result => `
+                <div class="student-card" style="border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; border-radius: 8px;">
+                    <h4>Student ID: ${result.student_id}</h4>
+                    <p><strong>Name:</strong> ${result.student_name || 'N/A'}</p>
+                    <p><strong>Year:</strong> ${result.year} | <strong>Semester:</strong> ${result.semester}</p>
+                    <p><strong>Exam Type:</strong> ${result.examType} | <strong>Format:</strong> ${result.format}</p>
+                    ${result.subjects ? `
+                        <div class="subjects" style="margin-top: 1rem;">
+                            <h5>Subject Results:</h5>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+                                ${Object.entries(result.subjects).map(([code, subject]) => `
+                                    <div style="background: #f8f9fa; padding: 0.5rem; border-radius: 4px;">
+                                        <strong>${code}:</strong> ${subject.grade || subject.internal_marks || 'N/A'}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Load notices when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNotices();
+            initializeUpload();
+        });
+    </script>
+</body>
+</html>

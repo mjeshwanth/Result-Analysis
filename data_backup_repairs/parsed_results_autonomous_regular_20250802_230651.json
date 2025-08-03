@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "format": "autonomous",
+    "exam_type": "regular",
+    "processed_at": "2025-08-02T23:16:51.915570",
+    "total_students": 1233,
+    "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+    "processing_status": "completed",
+    "upload_id": "upload_20250802_230640"
+  },
+  "students": [
+    {
+      "student_id": "24B81A0101",
+      "semester": "Year 1 Semester 1",
+      "university": "SIR C.R.REDDY COLLEGE OF E",
+      "upload_date": "2025-08-02",
+      "sgpa": 7.03,
+      "subjectGrades": [
+        {
+          "code": "24BS1003",
+          "subject": "Communicative English",
+          "grade": "D",
+          "internals": 0,
+          "credits": 3.0
+        },
+        {
+          "code": "24BS1107",
+          "subject": "Engineering Chemistry",
+          "grade": "E",
+          "internals": 0,
+          "credits": 3.0
+        },
+        {
+          "code": "24BS1101",
+          "subject": "Linear Algebra & Calculus",
+          "grade": "C",
+          "internals": 0,
+          "credits": 1.5
+        },
+        {
+          "code": "24CE1104",
+          "subject": "Building materials and construction",
+          "grade": "D",
+          "internals": 0,
+          "credits": 3.0
+        },
+        {
+          "code": "24CS1102",
+          "subject": "Introduction to Programming",
+          "grade": "D",
+          "internals": 0,
+          "credits": 3.0
+        },
+        {
+          "code": "24BS1004",
+          "subject": "Subject 6",
+          "grade": "S",
+          "internals": 0,
+          "credits": 3.0
+        },
+        {
+          "code": "24BS1108",
+          "subject": "Subject 7",
+          "grade": "S",
+          "internals": 0,
+          "credits": 1.5
+        },
+        {
+          "code": "24ME1003",
+          "subject": "Subject 8",
+          "grade": "A",
+          "internals": 0,
+          "credits": 3.0
+        },
+        {
+          "code": "24CS1101",
+          "subject": "Subject 9",
+          "grade": "S",
+          "internals": 0,
+          "credits": 1.5
+        },
+        {
+          "code": "24AC1001",
+          "subject": "Subject 10",
+          "grade": "A",
+          "internals": 0,
+          "credits": 1.5
+        }
+      ],
+      "year": "Unknown",
+      "examType": "regular",
+      "availableSemesters": [
+        "regular"
+      ],
+      "availableExamTypes": [
+        "regular"
+      ],
+      "format": "autonomous",
+      "uploadId": "autonomous_regular_20250802_230651",
+      "attempts": 0,
+      "uploadedAt": 

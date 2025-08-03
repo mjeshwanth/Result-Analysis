@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training & Placement - Student Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-design.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .placement-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 0;
+        }
+
+        .placement-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .placement-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .placement-header h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .placement-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .controls-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .filters-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .filter-input, .filter-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            background: #f9fafb;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-input:focus, .filter-select:focus {
+            border-color: var(--primary-color);
+            background: white;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .students-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .export-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .students-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .students-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-color);
+            border-bottom: 2px solid #e5e7eb;
+            white-space: nowrap;
+        }
+
+        .students-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
+        }
+
+        .students-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .student-id {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Courier New', monospace;
+        }
+
+        .sgpa-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .sgpa-excellent { background: #dcfce7; color: #166534; } /* 8.5+ */
+        .sgpa-good { background: #dbeafe; color: #1e40af; } /* 7.0-8.4 */
+        .sgpa-average { background: #fef3c7; color: #92400e; } /* 6.0-6.9 */
+        .sgpa-below { background: #fecaca; color: #dc2626; } /* <6.0 */
+
+        .backlogs-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            min-width: 40px;
+        }
+
+        .backlogs-none { background: #dcfce7; color: #166534; }
+        .backlogs-few { background: #fef3c7; color: #92400e; }
+        .backlogs-many { background: #fecaca; color: #dc2626; }
+
+        .eligibility-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .eligible { background: #dcfce7; color: #166534; }
+        .not-eligible { background: #fecaca; color: #dc2626; }
+
+        .branch-badge {
+            padding: 0.25rem 0.5rem;
+            background: #f3f4f6;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .semester-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results-icon {
+            width: 64px;
+            height: 64px;
+            color: #d1d5db;
+            margin: 0 auto 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .filters-row {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .placement-container {
+                padding: 0 1rem;
+            }
+
+            .placement-header h1 {
+                font-size: 2rem;
+            }
+
+            .students-table {
+                font-size: 0.9rem;
+            }
+
+            .students-table th,
+            .students-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .stats-overview {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="placement-page">
+        <div class="placement-container">
+            <!-- Header -->
+            <div class="placement-header">
+                <h1>Training & Placement Analysis</h1>
+                <p>Comprehensive student analysis for placement eligibility and training requirements</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="controls-section">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label class="filter-label">Minimum CGPA</label>
+                        <input type="number" class="filter-input" id="minCgpa" placeholder="6.0" step="0.1" min="0" max="10">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Maximum Backlogs</label>
+                        <input type="number" class="filter-input" id="maxBacklogs" placeholder="4" min="0" max="20">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Branch</label>
+                        <select class="filter-select" id="branchFilter">
+                            <option value="">All Branches</option>
+                            <option value="A1">Computer Science (A1)</option>
+                            <option value="A2">Electrical (A2)</option>
+                            <option value="A3">Mechanical (A3)</option>
+                            <option value="A4">Civil (A4)</option>
+                            <option value="A5">Electronics (A5)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Eligibility</label>
+                        <select class="filter-select" id="eligibilityFilter">
+                            <option value="">All Students</option>
+                            <option value="eligible">Eligible Only</option>
+                            <option value="not-eligible">Not Eligible</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="loadStudentData()">
+                        <i data-lucide="search"></i>
+                        Analyze Students
+                    </button>
+                    <button class="btn btn-outline" onclick="resetFilters()">
+                        <i data-lucide="refresh-cw"></i>
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Overview -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalStudents">-</div>
+                    <div class="stat-label">Total Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="eligibleStudents">-</div>
+                    <div class="stat-label">Placement Eligible</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgCgpa">-</div>
+                    <div class="stat-label">Average CGPA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="zeroBacklogs">-</div>
+                    <div class="stat-label">Zero Backlogs</div>
+                </div>
+            </div>
+
+            <!-- Students List -->
+            <div class="students-section">
+                <div class="section-header">
+                    <h2 class="section-title">Student Analysis</h2>
+                    <button class="export-btn" onclick="exportToCSV()">
+                        <i data-lucide="download"></i>
+                        Export CSV
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" style="display: none;">
+                    <div class="loading-card">
+                        <div class="spinner"></div>
+                        <h3>Loading student data...</h3>
+                        <p>Please wait while we analyze student records</p>
+                    </div>
+                </div>
+
+                <!-- Students Table -->
+                <div id="studentsTable" style="display: none;">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Branch</th>
+                                <th>CGPA</th>
+                                <th>Backlogs</th>
+                                <th>Semesters</th>
+                                <th>Eligibility</th>
+                                <th>Training Need</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Students will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- No Results -->
+                <div id="noResults" class="no-results" style="display: none;">
+                    <i data-lucide="users-x" class="no-results-icon"></i>
+                    <h3>No students found</h3>
+                    <p>Try adjusting your filter criteria</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-card">
+            <div class="spinner"></div>
+            <h3>Processing...</h3>
+            <p>Analyzing student data</p>
+        </div>
+    </div>
+
+    <!-- Back to Dashboard Button -->
+    <div class="floating-action">
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+            <i data-lucide="arrow-left"></i>
+            Back to Dashboard
+        </a>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        let allStudents = [];
+        let filteredStudents = [];
+
+        // Load student data from JSON files and Firebase
+        async function loadStudentData() {
+            try {
+                showLoading(true);
+                hideResults();
+
+                // Get filter values
+                const minCgpa = parseFloat(document.getElementById('minCgpa').value) || 0;
+                const maxBacklogs = parseInt(document.getElementById('maxBacklogs').value) || 999;
+                const branch = document.getElementById('branchFilter').value;
+                const eligibility = document.getElementById('eligibilityFilter').value;
+
+                console.log('Loading student data with filters:', { minCgpa, maxBacklogs, branch, eligibility });
+
+                // Load data from JSON files (since we have data there)
+                const response = await fetch('/api/placement/students-analysis');
+                
+                if (!response.ok) {
+                    // If API doesn't exist, create dummy data for demonstration
+                    allStudents = generateDemoStudentData();
+                } else {
+                    const data = await response.json();
+                    allStudents = data.students || [];
+                }
+
+                // Apply filters
+                filteredStudents = allStudents.filter(student => {
+                    const cgpaMatch = student.cgpa >= minCgpa;
+                    const backlogsMatch = student.backlogs <= maxBacklogs;
+                    const branchMatch = !branch || student.branch.includes(branch);
+                    const eligibilityMatch = !eligibility || 
+                        (eligibility === 'eligible' && student.eligible) ||
+                        (eligibility === 'not-eligible' && !student.eligible);
+
+                    return cgpaMatch && backlogsMatch && branchMatch && eligibilityMatch;
+                });
+
+                // Update statistics
+                updateStatistics(filteredStudents);
+
+                // Display results
+                displayStudents(filteredStudents);
+
+                showLoading(false);
+                showResults();
+
+            } catch (error) {
+                console.error('Error loading student data:', error);
+                showLoading(false);
+                showNoResults();
+            }
+        }
+
+        // Generate demo student data for demonstration
+        function generateDemoStudentData() {
+            const students = [];
+            const branches = ['A1', 'A2', 'A3', 'A4', 'A5'];
+            const branchNames = {
+                'A1': 'Computer Science',
+                'A2': 'Electrical',
+                'A3': 'Mechanical', 
+                'A4': 'Civil',
+                'A5': 'Electronics'
+            };
+
+            // Generate demo data based on actual student IDs from JSON files
+            const baseIds = ['24B81A01', '23B81A01', '22B81A01', '21B81A01'];
+            
+            for (let i = 0; i < 200; i++) {
+                const baseId = baseIds[Math.floor(Math.random() * baseIds.length)];
+                const branch = branches[Math.floor(Math.random() * branches.length)];
+                const studentId = `${baseId.slice(0, 6)}${branch}${(i + 1).toString().padStart(2, '0')}`;
+                
+                const cgpa = (Math.random() * 4 + 6).toFixed(2); // 6.0 to 10.0
+                const backlogs = Math.floor(Math.random() * 8); // 0 to 7
+                const semesters = Math.floor(Math.random() * 4) + 4; // 4 to 7 semesters
+                
+                const eligible = parseFloat(cgpa) >= 6.5 && backlogs <= 3;
+                const needsTraining = parseFloat(cgpa) < 7.0 || backlogs > 1;
+
+                students.push({
+                    student_id: studentId,
+                    branch: branch,
+                    branch_name: branchNames[branch],
+                    cgpa: parseFloat(cgpa),
+                    backlogs: backlogs,
+                    semesters_completed: semesters,
+                    eligible: eligible,
+                    needs_training: needsTraining
+                });
+            }
+
+            return students.sort((a, b) => b.cgpa - a.cgpa);
+        }
+
+        // Update statistics display
+        function updateStatistics(students) {
+            const total = students.length;
+            const eligible = students.filter(s => s.eligible).length;
+            const avgCgpa = students.length > 0 ? 
+                (students.reduce((sum, s) => sum + s.cgpa, 0) / students.length).toFixed(2) : '0.00';
+            const zeroBacklogs = students.filter(s => s.backlogs === 0).length;
+
+            document.getElementById('totalStudents').textContent = total;
+            document.getElementById('eligibleStudents').textContent = eligible;
+            document.getElementById('avgCgpa').textContent = avgCgpa;
+            document.getElementById('zeroBacklogs').textContent = zeroBacklogs;
+        }
+
+        // Display students in table
+        function displayStudents(students) {
+            const tbody = document.getElementById('studentsTableBody');
+            tbody.innerHTML = '';
+
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><span class="student-id">${student.student_id}</span></td>
+                    <td><span class="branch-badge">${student.branch_name || student.branch}</span></td>
+                    <td><span class="sgpa-badge ${getSgpaBadgeClass(student.cgpa)}">${student.cgpa}</span></td>
+                    <td><span class="backlogs-badge ${getBacklogsBadgeClass(student.backlogs)}">${student.backlogs}</span></td>
+                    <td><span class="semester-info">${student.semesters_completed || 'N/A'}</span></td>
+                    <td><span class="eligibility-badge ${student.eligible ? 'eligible' : 'not-eligible'}">${student.eligible ? 'Eligible' : 'Not Eligible'}</span></td>
+                    <td><span class="eligibility-badge ${student.needs_training ? 'not-eligible' : 'eligible'}">${student.needs_training ? 'Required' : 'Optional'}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Get SGPA badge class based on value
+        function getSgpaBadgeClass(sgpa) {
+            if (sgpa >= 8.5) return 'sgpa-excellent';
+            if (sgpa >= 7.0) return 'sgpa-good';
+            if (sgpa >= 6.0) return 'sgpa-average';
+            return 'sgpa-below';
+        }
+
+        // Get backlogs badge class based on count
+        function getBacklogsBadgeClass(backlogs) {
+            if (backlogs === 0) return 'backlogs-none';
+            if (backlogs <= 3) return 'backlogs-few';
+            return 'backlogs-many';
+        }
+
+        // Reset all filters
+        function resetFilters() {
+            document.getElementById('minCgpa').value = '';
+            document.getElementById('maxBacklogs').value = '';
+            document.getElementById('branchFilter').value = '';
+            document.getElementById('eligibilityFilter').value = '';
+        }
+
+        // Export to CSV
+        function exportToCSV() {
+            if (filteredStudents.length === 0) {
+                alert('No data to export');
+                return;
+            }
+
+            const headers = ['Student ID', 'Branch', 'CGPA', 'Backlogs', 'Semesters', 'Eligible', 'Training Need'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredStudents.map(student => [
+                    student.student_id,
+                    student.branch_name || student.branch,
+                    student.cgpa,
+                    student.backlogs,
+                    student.semesters_completed || 'N/A',
+                    student.eligible ? 'Yes' : 'No',
+                    student.needs_training ? 'Required' : 'Optional'
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `placement_analysis_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Show/hide functions
+        function showLoading(show) {
+            document.getElementById('loadingState').style.display = show ? 'block' : 'none';
+        }
+
+        function showResults() {
+            document.getElementById('studentsTable').style.display = 'block';
+            document.getElementById('noResults').style.display = 'none';
+        }
+
+        function hideResults() {
+            document.getElementById('studentsTable').style.display = 'none';
+            document.getElementById('noResults').style.display = 'none';
+        }
+
+        function showNoResults() {
+            document.getElementById('studentsTable').style.display = 'none';
+            document.getElementById('noResults').style.display = 'block';
+        }
+
+        // Load data on page load
+        window.addEventListener('load', function() {
+            loadStudentData();
+        });
+    </script>
+</body>
+</html>

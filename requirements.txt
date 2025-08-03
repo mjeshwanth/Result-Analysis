@@ -1,4 +1,6 @@
-flask
-flask-cors
+Flask
+python-dotenv
 firebase-admin
+python-magic-bin ; platform_system == "Windows"
+PyMuPDF
 pdfplumber

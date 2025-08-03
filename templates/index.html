@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Analysis System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 30%, #6366f1 70%, #4338ca 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(67, 56, 202, 0.3) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { opacity: 1; transform: translateY(0px); }
+            50% { opacity: 0.8; transform: translateY(-10px); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-card {
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.15);
+            border-color: #4f46e5;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-card h3 {
+            margin: 0 0 1rem 0;
+            color: #4f46e5;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .nav-card p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .status.active {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            color: #4f46e5;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Student Result Analysis</h1>
+        <p class="subtitle">Comprehensive PDF Processing & Firebase Integration System</p>
+        
+        <div class="nav-grid">
+            <a href="/admin/dashboard" class="nav-card">
+                <span class="icon">📊</span>
+                <h3>Main Dashboard</h3>
+                <p>Notice board, results viewer, and comprehensive student data management</p>
+                <span class="status active">✅ Active</span>
+            </a>
+
+            <a href="/upload" class="nav-card">
+                <span class="icon">⬆️</span>
+                <h3>Enhanced Upload</h3>
+                <p>Upload PDFs with real-time batch progress, Firebase integration, and detailed status tracking</p>
+                <span class="status active">🚀 New Features</span>
+            </a>
+
+            <a href="/placement" class="nav-card">
+                <span class="icon">🎯</span>
+                <h3>Training & Placement</h3>
+                <p>CGPA analysis, placement eligibility filter, class ranges (e.g., 23B81A1266-23B81A12D0), and backlog tracking</p>
+                <span class="status active">🎓 New Module</span>
+            </a>
+
+            <a href="/admin/dashboard" class="nav-card">
+                <span class="icon">⚙️</span>
+                <h3>Admin Dashboard</h3>
+                <p>Administrative interface for managing notices and system configuration</p>
+                <span class="status active">✅ Available</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p><strong>System Features:</strong></p>
+            <p>✅ PDF Parsing (JNTUK & Autonomous) | ✅ Firebase Storage | ✅ Batch Processing | ✅ Real-time Progress | 🎯 Placement Analytics</p>
+            <p><strong>New:</strong> Training & Placement module with CGPA filtering, class range analysis, and backlog tracking</p>
+            <p><small>Server running on http://127.0.0.1:5000 | Firebase Integration: Enabled</small></p>
+            <p><a href="/logout" style="color: #007bff; text-decoration: none;">🚪 Logout</a></p>
+        </div>
+    </div>
+</body>
+</html>

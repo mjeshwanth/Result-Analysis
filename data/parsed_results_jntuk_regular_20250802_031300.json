@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-02T03:13:00",
+    "total_students": 0,
+    "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+    "processing_status": "repaired",
+    "completed_at": "2025-08-03T17:09:41.010010"
+  },
+  "students": [],
+  "firebase_upload": {
+    "uploaded": false,
+    "batches_completed": 0,
+    "students_saved": 0,
+    "duplicates_skipped": 0,
+    "upload_started_at": "",
+    "upload_completed_at": ""
+  }
+}

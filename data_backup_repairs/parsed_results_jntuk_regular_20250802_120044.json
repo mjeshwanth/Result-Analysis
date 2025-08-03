@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-02T12:16:35.835513",
+    "total_students": 1539,
+    "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+    "processing_status": "completed",
+    "upload_id": "upload_20250802_115945"
+  },
+  "students": [
+    {
+      "student_id": "17B81A0106",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-02",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161111",
+          "subject": "ENGINEERING MECHANICS",
+          "internals": 10,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ]
+    },
+    {
+      "student_id": "17B81A0130",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-02",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161102",
+          "subject": "MATHEMATICS-I",
+          "internals": 10,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161111",
+          "subject": "ENGINEERING MECHANICS",
+          "internals": 11,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "year": "Unknown",
+      "examType": "regular",
+      "availableSemesters": [
+        "regular"
+      ],
+      "availableExamTypes": [
+        "regular"
+      ],
+      "format": "jntuk",
+      "uploadId": "jntuk_regular_20250802_120044",
+      "attempts": 0,
+      "uploadedAt": 

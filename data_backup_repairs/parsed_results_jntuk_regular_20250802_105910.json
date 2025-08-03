@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-02T11:15:24.959391",
+    "total_students": 1604,
+    "original_filename": "2-2 B8 R16-19-20-23 RESULTS JULY 2025.pdf",
+    "processing_status": "completed",
+    "upload_id": "upload_20250802_105910"
+  },
+  "students": [
+    {
+      "student_id": "17B81A0221",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-02",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1622022",
+          "subject": "ELECTRICAL MACHINES-II",
+          "internals": 16,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R1622022",
+          "subject": "ELECTRICAL MACHINES-II",
+          "internals": 16,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ]
+    },
+    {
+      "student_id": "17B81A02C1",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-02",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622024",
+          "subject": "CONTROL SYSTEMS",
+          "internals": 0,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622024",
+          "subject": "CONTROL SYSTEMS",
+          "internals": 0,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "year": "Unknown",
+      "examType": "regular",
+      "availableSemesters": [
+        "regular"
+      ],
+      "availableExamTypes": [
+        "regular"
+      ],
+      "format": "jntuk",
+      "uploadId": "jntuk_regular_20250802_105910",
+      "attempts": 0,
+      "uploadedAt": 

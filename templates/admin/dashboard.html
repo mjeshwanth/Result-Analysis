@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Notice Board</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background: #003366;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .action-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .main-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .content-area {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .notice-form {
+            display: none;
+        }
+
+        .notice-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .notices-list {
+            margin-top: 1rem;
+        }
+
+        .notice-item {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .notice-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .notice-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #003366;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .file-preview {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .file-preview img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .notification {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .notification.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .notification.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .loading::after {
+            content: "Loading...";
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Dashboard</h1>
+        <div class="nav-links">
+            <a href="/upload" class="nav-link">Upload Results</a>
+            <button class="action-btn" onclick="showNoticeForm()">Create New Notice</button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <h2>Filters</h2>
+            <div class="filter-section">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="filterCategory" onchange="filterNotices()">
+                        <option value="all">All Notices</option>
+                        <option value="exam">Exam</option>
+                        <option value="results">Results</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="filterPriority" onchange="filterNotices()">
+                        <option value="all">All Priorities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div id="notification" class="notification"></div>
+            <div id="loading" class="loading"></div>
+
+            <div class="notice-form" id="noticeForm">
+                <h2>Create New Notice</h2>
+                <form id="createNoticeForm">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea id="content" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="exam">Exam</option>
+                            <option value="results">Results</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority" required>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachments">Attachments</label>
+                        <input type="file" id="attachments" multiple accept=".pdf,image/*,.txt">
+                        <div id="filePreview" class="file-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validUntil">Valid Until</label>
+                        <input type="datetime-local" id="validUntil">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post Notice</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideNoticeForm()">Cancel</button>
+                </form>
+            </div>
+
+            <div class="notices-list" id="noticesList"></div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize Firebase with config from backend or use default
+        const firebaseConfig = {
+            apiKey: "{{ firebase_config.apiKey if firebase_config else 'default-key' }}",
+            authDomain: "{{ firebase_config.authDomain if firebase_config else 'plant-ec218.firebaseapp.com' }}",
+            projectId: "{{ firebase_config.projectId if firebase_config else 'plant-ec218' }}",
+            storageBucket: "{{ firebase_config.storageBucket if firebase_config else 'plant-ec218.firebasestorage.app' }}",
+            messagingSenderId: "{{ firebase_config.messagingSenderId if firebase_config else '123456789' }}",
+            appId: "{{ firebase_config.appId if firebase_config else 'default-app-id' }}"
+        };
+
+        // Initialize Firebase only if config is available
+        try {
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            const storage = firebase.storage();
+            console.log('Firebase initialized successfully');
+        } catch (error) {
+            console.warn('Firebase initialization failed:', error);
+        }
+        
+        // Initialize Firebase Auth
+        const auth = firebase.auth();
+        
+        // Load notices when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadNotices();
+        });
+
+        // Auth State Observer (commented out for now - no auth required)
+        /*
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById('userEmail').textContent = user.email;
+                loadNotices();
+            } else {
+                window.location.href = '/';
+            }
+        });
+        */
+
+        function logout() {
+            if (typeof auth !== 'undefined' && auth.signOut) {
+                auth.signOut().then(() => {
+                    window.location.href = '/';
+                }).catch((error) => {
+                    showNotification('Logout failed: ' + error.message, 'error');
+                });
+            } else {
+                window.location.href = '/';
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        function showNoticeForm() {
+            document.getElementById('noticeForm').classList.add('active');
+        }
+
+        function hideNoticeForm() {
+            document.getElementById('noticeForm').classList.remove('active');
+            document.getElementById('createNoticeForm').reset();
+            document.getElementById('filePreview').innerHTML = '';
+        }
+
+        // File Preview
+        document.getElementById('attachments').addEventListener('change', function(e) {
+            const preview = document.getElementById('filePreview');
+            preview.innerHTML = '';
+            
+            Array.from(e.target.files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    const div = document.createElement('div');
+                    div.textContent = file.name;
+                    preview.appendChild(div);
+                }
+            });
+        });
+
+        // Create Notice
+        document.getElementById('createNoticeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            try {
+                const formData = new FormData();
+                formData.append('title', document.getElementById('title').value);
+                formData.append('content', document.getElementById('content').value);
+                formData.append('category', document.getElementById('category').value);
+                formData.append('priority', document.getElementById('priority').value);
+                formData.append('validUntil', document.getElementById('validUntil').value);
+
+                const files = document.getElementById('attachments').files;
+                for (let i = 0; i < files.length; i++) {
+                    formData.append('attachments', files[i]);
+                }
+
+                const response = await fetch('/api/notices', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    showNotification('Notice created successfully!', 'success');
+                    hideNoticeForm();
+                    loadNotices();
+                } else {
+                    throw new Error(result.error || 'Failed to create notice');
+                }
+            } catch (error) {
+                showNotification(error.message, 'error');
+            } finally {
+                loading.style.display = 'none';
+            }
+        });
+
+        // Load Notices
+        async function loadNotices() {
+            const loading = document.getElementById('loading');
+            const noticesList = document.getElementById('noticesList');
+            loading.style.display = 'block';
+            noticesList.innerHTML = '';
+
+            try {
+                const category = document.getElementById('filterCategory').value;
+                const priority = document.getElementById('filterPriority').value;
+
+                const response = await fetch(`/api/notices?category=${category}&priority=${priority}`);
+
+                const result = await response.json();
+                if (response.ok) {
+                    result.notices.forEach(notice => {
+                        const noticeElement = createNoticeElement(notice);
+                        noticesList.appendChild(noticeElement);
+                    });
+                } else {
+                    throw new Error(result.error || 'Failed to load notices');
+                }
+            } catch (error) {
+                showNotification(error.message, 'error');
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function createNoticeElement(notice) {
+            const div = document.createElement('div');
+            div.className = 'notice-item';
+            div.innerHTML = `
+                <h3>${notice.title}</h3>
+                <p>${notice.content}</p>
+                <div class="notice-metadata">
+                    <span>Category: ${notice.category}</span>
+                    <span>Priority: ${notice.priority}</span>
+                    <span>Posted: ${new Date(notice.createdAt).toLocaleString()}</span>
+                </div>
+                ${notice.attachments ? `
+                    <div class="notice-attachments">
+                        ${notice.attachments.map(att => `
+                            <a href="${att.fileUrl}" target="_blank">${att.fileName}</a>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                <div class="notice-actions">
+                    <button class="btn btn-secondary" onclick="editNotice('${notice.id}')">Edit</button>
+                    <button class="btn btn-danger" onclick="deleteNotice('${notice.id}')">Delete</button>
+                </div>
+            `;
+            return div;
+        }
+
+        async function deleteNotice(noticeId) {
+            if (!confirm('Are you sure you want to delete this notice?')) return;
+
+            try {
+                const response = await fetch(`/api/notices/${noticeId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    showNotification('Notice deleted successfully!', 'success');
+                    loadNotices();
+                } else {
+                    const result = await response.json();
+                    throw new Error(result.error || 'Failed to delete notice');
+                }
+            } catch (error) {
+                showNotification(error.message, 'error');
+            }
+        }
+
+        function editNotice(noticeId) {
+            // TODO: Implement edit functionality
+            showNotification('Edit functionality coming soon!', 'success');
+        }
+
+        function filterNotices() {
+            loadNotices();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+{
+  "generated_at": "2025-08-03T17:11:27.889150",
+  "summary": {
+    "total_files": 36,
+    "total_students": 9067,
+    "average_students_per_file": 251.9,
+    "formats": {
+      "autonomous": 2,
+      "jntuk": 34
+    },
+    "exam_types": {
+      "regular": 26,
+      "supplementary": 10
+    },
+    "upload_status": {
+      "uploaded": 3,
+      "not_uploaded": 33
+    }
+  },
+  "files": [
+    {
+      "filename": "parsed_results_autonomous_regular_20250802_230651.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "autonomous",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T23:06:51",
+      "uploaded": false,
+      "file_size_kb": 0.51
+    },
+    {
+      "filename": "parsed_results_autonomous_regular_20250802_233546.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "autonomous",
+      "exam_type": "regular",
+      "student_count": 710,
+      "processed_at": "2025-08-02T23:42:57.603335",
+      "uploaded": false,
+      "file_size_kb": 1356.99
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_013140.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:31:40.239315",
+      "uploaded": true,
+      "file_size_kb": 0.6
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_013600.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:36:00.393889",
+      "uploaded": false,
+      "file_size_kb": 0.47
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_013608.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:36:08.110876",
+      "uploaded": false,
+      "file_size_kb": 0.46
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_013856.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:38:56.847198",
+      "uploaded": false,
+      "file_size_kb": 0.47
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_013903.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:39:03.778387",
+      "uploaded": false,
+      "file_size_kb": 0.46
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_014137.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:41:37.710702",
+      "uploaded": false,
+      "file_size_kb": 0.47
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_014145.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:41:45.545194",
+      "uploaded": false,
+      "file_size_kb": 0.46
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_014409.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:44:09.527126",
+      "uploaded": false,
+      "file_size_kb": 0.47
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_014417.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:44:17.690746",
+      "uploaded": false,
+      "file_size_kb": 0.46
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_022122.json",
+      "original_filename": "1st BTech 1st Sem (CR24) Results.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:21:22.667024",
+      "uploaded": false,
+      "file_size_kb": 0.47
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_022123.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:21:23.092857",
+      "uploaded": false,
+      "file_size_kb": 0.46
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_022228.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:22:28.528441",
+      "uploaded": false,
+      "file_size_kb": 0.46
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_024414.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:44:14.906420",
+      "uploaded": true,
+      "file_size_kb": 0.6
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_024636.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:46:36.091921",
+      "uploaded": true,
+      "file_size_kb": 0.6
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_030330.json",
+      "original_filename": "2-2 B8 R16-19-20-23 RESULTS JULY 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 1604,
+      "processed_at": "2025-08-02T03:03:30.356410",
+      "uploaded": false,
+      "file_size_kb": 4410.67
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_030513.json",
+      "original_filename": "2-2 B8 R16-19-20-23 RESULTS JULY 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 1604,
+      "processed_at": "2025-08-02T03:05:13.564837",
+      "uploaded": false,
+      "file_size_kb": 4410.67
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_031300.json",
+      "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T03:13:00",
+      "uploaded": false,
+      "file_size_kb": 0.57
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_105910.json",
+      "original_filename": "2-2 B8 R16-19-20-23 RESULTS JULY 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T10:59:10",
+      "uploaded": false,
+      "file_size_kb": 0.51
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_111753.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T11:17:53",
+      "uploaded": false,
+      "file_size_kb": 0.5
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_111910.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T11:19:10",
+      "uploaded": false,
+      "file_size_kb": 0.5
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_115213.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 1805,
+      "processed_at": "2025-08-02T12:04:19.239813",
+      "uploaded": false,
+      "file_size_kb": 4818.76
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_120044.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 0,
+      "processed_at": "2025-08-02T12:00:44",
+      "uploaded": false,
+      "file_size_kb": 0.56
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_142247.json",
+      "original_filename": "BTECH 2-1 RESULT FEB 2025.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 1805,
+      "processed_at": "2025-08-02T14:34:47.366909",
+      "uploaded": false,
+      "file_size_kb": 4818.76
+    },
+    {
+      "filename": "parsed_results_jntuk_regular_20250802_145214.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "regular",
+      "student_count": 1539,
+      "processed_at": "2025-08-02T15:02:47.177003",
+      "uploaded": false,
+      "file_size_kb": 2165.86
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_013720.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:37:20.358779",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_013808.json",
+      "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:38:08.546462",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_014010.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:40:10.505320",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_014056.json",
+      "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:40:56.153917",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_014243.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:42:43.800799",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_014327.json",
+      "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:43:27.630412",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_014532.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:45:32.896632",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_014621.json",
+      "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T01:46:21.825866",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_022222.json",
+      "original_filename": "Result of I B.Tech I Semester (R19R20R23) Regular  Supplementary Examinations, Jan-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:22:22.947909",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    },
+    {
+      "filename": "parsed_results_jntuk_supplementary_20250802_022224.json",
+      "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "format": "jntuk",
+      "exam_type": "supplementary",
+      "student_count": 0,
+      "processed_at": "2025-08-02T02:22:24.942279",
+      "uploaded": false,
+      "file_size_kb": 0.53
+    }
+  ]
+}

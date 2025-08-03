@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Results - Student Result Management System</title>
+    
+    <!-- Modern Design System -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-design.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 11h8"></path>
+                    <path d="M8 15h6"></path>
+                </svg>
+                <span>Result Management</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="/" class="navbar-link">Dashboard</a></li>
+                <li><a href="/upload" class="navbar-link active">Upload Results</a></li>
+                <li><a href="/placement" class="navbar-link">Placement</a></li>
+                <li><a href="/data-files" class="navbar-link">Data Files</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='/logout'">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%); color: white; padding: var(--space-2xl) 0;">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-3">
+                    <i data-lucide="upload" style="display: inline-block; margin-right: 0.5rem;"></i>
+                    Upload Result PDFs
+                </h1>
+                <p class="text-lg opacity-90">
+                    Process JNTUK and Autonomous college result PDFs with advanced batch processing
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" style="margin-top: var(--space-xl);">
+        
+        <!-- Upload Form Card -->
+        <div class="card animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+            <div class="card-header">
+                <div class="card-title">
+                    <i data-lucide="file-plus" style="display: inline-block; margin-right: 0.5rem;"></i>
+                    Upload PDF File
+                </div>
+                <div class="card-description">
+                    Select a PDF file containing student results and configure processing options
+                </div>
+            </div>
+            <div class="card-content">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    
+                    <!-- File Upload Area -->
+                    <div class="form-group">
+                        <label class="form-label">PDF File</label>
+                        <div id="dropZone" class="drop-zone">
+                            <div class="drop-zone-content">
+                                <i data-lucide="upload-cloud" style="width: 48px; height: 48px; margin-bottom: var(--space-md); color: var(--primary-500);"></i>
+                                <h3 style="margin-bottom: var(--space-sm); color: var(--secondary-800);">Drop your PDF here</h3>
+                                <p style="color: var(--secondary-600); margin-bottom: var(--space-md);">or click to browse files</p>
+                                <input type="file" id="pdfFile" name="pdf" accept=".pdf" style="display: none;">
+                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('pdfFile').click()">
+                                    <i data-lucide="folder"></i>
+                                    Browse Files
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-help">
+                            Maximum file size: 50MB. Only PDF files are supported.
+                        </div>
+                    </div>
+
+                    <!-- Configuration Options -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+                        <div class="form-group">
+                            <label for="format" class="form-label">
+                                <i data-lucide="settings" style="display: inline-block; margin-right: 0.25rem; width: 16px; height: 16px;"></i>
+                                Format Type
+                            </label>
+                            <select id="format" name="format" class="form-input form-select" required>
+                                <option value="">Select Format</option>
+                                <option value="jntuk">JNTUK</option>
+                                <option value="autonomous">Autonomous</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="examType" class="form-label">
+                                <i data-lucide="graduation-cap" style="display: inline-block; margin-right: 0.25rem; width: 16px; height: 16px;"></i>
+                                Exam Type
+                            </label>
+                            <select id="examType" name="exam_type" class="form-input form-select" required>
+                                <option value="">Select Exam Type</option>
+                                <option value="regular">Regular</option>
+                                <option value="supply">Supply/Supplementary</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Processing Options -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="zap" style="display: inline-block; margin-right: 0.25rem; width: 16px; height: 16px;"></i>
+                            Processing Options
+                        </label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md);">
+                            <div style="background: var(--secondary-50); padding: var(--space-md); border-radius: var(--radius-md); border: 1px solid var(--secondary-200);">
+                                <div style="display: flex; align-items: center; margin-bottom: var(--space-sm);">
+                                    <input type="checkbox" id="batchProcessing" checked disabled style="margin-right: var(--space-sm);">
+                                    <label for="batchProcessing" style="font-weight: 500; color: var(--secondary-700);">Batch Processing</label>
+                                </div>
+                                <p style="font-size: 0.875rem; color: var(--secondary-600);">97% memory efficiency with real-time progress</p>
+                            </div>
+                            
+                            <div style="background: var(--secondary-50); padding: var(--space-md); border-radius: var(--radius-md); border: 1px solid var(--secondary-200);">
+                                <div style="display: flex; align-items: center; margin-bottom: var(--space-sm);">
+                                    <input type="checkbox" id="firebaseUpload" checked disabled style="margin-right: var(--space-sm);">
+                                    <label for="firebaseUpload" style="font-weight: 500; color: var(--secondary-700);">Firebase Upload</label>
+                                </div>
+                                <p style="font-size: 0.875rem; color: var(--secondary-600);">Automatic cloud sync with duplicate detection</p>
+                            </div>
+                            
+                            <div style="background: var(--secondary-50); padding: var(--space-md); border-radius: var(--radius-md); border: 1px solid var(--secondary-200);">
+                                <div style="display: flex; align-items: center; margin-bottom: var(--space-sm);">
+                                    <input type="checkbox" id="jsonExport" checked disabled style="margin-right: var(--space-sm);">
+                                    <label for="jsonExport" style="font-weight: 500; color: var(--secondary-700);">JSON Export</label>
+                                </div>
+                                <p style="font-size: 0.875rem; color: var(--secondary-600);">Local backup with metadata and timestamps</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <button type="submit" id="uploadBtn" class="btn btn-primary btn-lg w-full">
+                            <i data-lucide="rocket"></i>
+                            Start Processing
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div id="progressSection" class="card animate-fade-in" style="max-width: 800px; margin: var(--space-xl) auto 0; display: none;">
+            <div class="card-header">
+                <div class="card-title">
+                    <i data-lucide="activity" style="display: inline-block; margin-right: 0.5rem;"></i>
+                    Processing Progress
+                </div>
+                <div class="card-description">
+                    Real-time status of your PDF processing
+                </div>
+            </div>
+            <div class="card-content">
+                
+                <!-- Overall Progress -->
+                <div style="margin-bottom: var(--space-xl);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                        <span class="font-medium">Overall Progress</span>
+                        <span id="overallPercentage" class="font-medium">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="overallProgress" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Stage Progress -->
+                <div id="stageProgress">
+                    <!-- Parsing Stage -->
+                    <div class="progress-stage" id="parsingStage">
+                        <div class="progress-stage-header">
+                            <div class="progress-stage-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div class="progress-stage-content">
+                                <div class="progress-stage-title">PDF Parsing</div>
+                                <div class="progress-stage-description" id="parsingDescription">Waiting to start...</div>
+                            </div>
+                            <div class="progress-stage-status" id="parsingStatus">
+                                <div class="spinner hidden"></div>
+                                <i data-lucide="clock" class="progress-stage-status-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Firebase Stage -->
+                    <div class="progress-stage" id="firebaseStage">
+                        <div class="progress-stage-header">
+                            <div class="progress-stage-icon">
+                                <i data-lucide="database"></i>
+                            </div>
+                            <div class="progress-stage-content">
+                                <div class="progress-stage-title">Firebase Upload</div>
+                                <div class="progress-stage-description" id="firebaseDescription">Waiting for parsing...</div>
+                            </div>
+                            <div class="progress-stage-status" id="firebaseStatus">
+                                <div class="spinner hidden"></div>
+                                <i data-lucide="clock" class="progress-stage-status-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JSON Stage -->
+                    <div class="progress-stage" id="jsonStage">
+                        <div class="progress-stage-header">
+                            <div class="progress-stage-icon">
+                                <i data-lucide="save"></i>
+                            </div>
+                            <div class="progress-stage-content">
+                                <div class="progress-stage-title">JSON Export</div>
+                                <div class="progress-stage-description" id="jsonDescription">Waiting for upload...</div>
+                            </div>
+                            <div class="progress-stage-status" id="jsonStatus">
+                                <div class="spinner hidden"></div>
+                                <i data-lucide="clock" class="progress-stage-status-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Summary -->
+                <div id="resultsSummary" class="hidden" style="margin-top: var(--space-xl); padding: var(--space-lg); background: var(--success-50); border: 1px solid var(--success-200); border-radius: var(--radius-lg);">
+                    <div style="display: flex; align-items: center; margin-bottom: var(--space-md);">
+                        <i data-lucide="check-circle" style="color: var(--success-600); margin-right: var(--space-sm);"></i>
+                        <h3 style="color: var(--success-800); margin: 0;">Processing Complete!</h3>
+                    </div>
+                    <div id="summaryContent" style="color: var(--success-700);"></div>
+                    <div style="margin-top: var(--space-lg); display: flex; gap: var(--space-md);">
+                        <a href="/student-search" class="btn btn-success">
+                            <i data-lucide="search"></i>
+                            Search Students
+                        </a>
+                        <a href="/data-files" class="btn btn-secondary">
+                            <i data-lucide="database"></i>
+                            View Data Files
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Error Display -->
+                <div id="errorDisplay" class="hidden" style="margin-top: var(--space-xl); padding: var(--space-lg); background: var(--error-50); border: 1px solid var(--error-200); border-radius: var(--radius-lg);">
+                    <div style="display: flex; align-items: center; margin-bottom: var(--space-md);">
+                        <i data-lucide="alert-circle" style="color: var(--error-600); margin-right: var(--space-sm);"></i>
+                        <h3 style="color: var(--error-800); margin: 0;">Processing Failed</h3>
+                    </div>
+                    <div id="errorContent" style="color: var(--error-700);"></div>
+                    <div style="margin-top: var(--space-lg);">
+                        <button class="btn btn-error" onclick="resetForm()">
+                            <i data-lucide="refresh-cw"></i>
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Info -->
+        <div class="dashboard-grid animate-fade-in" style="animation-delay: 0.2s; margin-top: var(--space-2xl);">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="zap" style="display: inline-block; margin-right: 0.5rem;"></i>
+                        Revolutionary Processing
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i data-lucide="trending-up" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
+                            <span>97% memory reduction with batch processing</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i data-lucide="clock" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
+                            <span>Real-time progress updates every 10 seconds</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i data-lucide="shield-check" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
+                            <span>Fault-tolerant with individual batch error isolation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="database" style="display: inline-block; margin-right: 0.5rem;"></i>
+                        Data Management
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i data-lucide="cloud" style="width: 16px; height: 16px; color: var(--primary-500); margin-right: 0.5rem;"></i>
+                            <span>Automatic Firebase cloud synchronization</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i data-lucide="copy" style="width: 16px; height: 16px; color: var(--primary-500); margin-right: 0.5rem;"></i>
+                            <span>Smart duplicate detection and prevention</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i data-lucide="hard-drive" style="width: 16px; height: 16px; color: var(--primary-500); margin-right: 0.5rem;"></i>
+                            <span>Local JSON backup with full metadata</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="bar-chart" style="display: inline-block; margin-right: 0.5rem;"></i>
+                        Scalability
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i data-lucide="layers" style="width: 16px; height: 16px; color: var(--warning-500); margin-right: 0.5rem;"></i>
+                            <span>Handle 10,000+ records with same performance</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--warning-500); margin-right: 0.5rem;"></i>
+                            <span>Constant memory usage regardless of PDF size</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i data-lucide="globe" style="width: 16px; height: 16px; color: var(--warning-500); margin-right: 0.5rem;"></i>
+                            <span>University-scale data processing ready</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Styles for Upload Page -->
+    <style>
+        .drop-zone {
+            border: 2px dashed var(--primary-300);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            text-align: center;
+            transition: var(--transition-fast);
+            background: var(--primary-50);
+            cursor: pointer;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: var(--primary-500);
+            background: var(--primary-100);
+        }
+
+        .drop-zone-content {
+            pointer-events: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--secondary-200);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-500), var(--primary-600));
+            border-radius: var(--radius-full);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-stage {
+            padding: var(--space-lg) 0;
+            border-bottom: 1px solid var(--secondary-200);
+        }
+
+        .progress-stage:last-child {
+            border-bottom: none;
+        }
+
+        .progress-stage-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .progress-stage-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: var(--secondary-100);
+            color: var(--secondary-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .progress-stage.active .progress-stage-icon {
+            background: var(--primary-100);
+            color: var(--primary-600);
+        }
+
+        .progress-stage.completed .progress-stage-icon {
+            background: var(--success-100);
+            color: var(--success-600);
+        }
+
+        .progress-stage.error .progress-stage-icon {
+            background: var(--error-100);
+            color: var(--error-600);
+        }
+
+        .progress-stage-content {
+            flex: 1;
+        }
+
+        .progress-stage-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--secondary-800);
+            margin-bottom: var(--space-xs);
+        }
+
+        .progress-stage-description {
+            color: var(--secondary-600);
+            font-size: 0.875rem;
+        }
+
+        .progress-stage-status {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .progress-stage-status-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--secondary-400);
+        }
+
+        .progress-stage.active .progress-stage-status-icon {
+            color: var(--primary-500);
+        }
+
+        .progress-stage.completed .progress-stage-status-icon {
+            color: var(--success-500);
+        }
+
+        .progress-stage.error .progress-stage-status-icon {
+            color: var(--error-500);
+        }
+
+        .file-selected {
+            background: var(--success-50);
+            border-color: var(--success-300);
+        }
+
+        .file-selected .drop-zone-content h3 {
+            color: var(--success-800);
+        }
+
+        .file-selected .drop-zone-content p {
+            color: var(--success-600);
+        }
+    </style>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // File upload handling
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('pdfFile');
+        const uploadForm = document.getElementById('uploadForm');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const progressSection = document.getElementById('progressSection');
+
+        // Drag and drop functionality
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('dragover');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('dragover');
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type === 'application/pdf') {
+                    showFileSelected(file);
+                } else {
+                    showError('Please select a PDF file.');
+                }
+            }
+        }
+
+        function showFileSelected(file) {
+            dropZone.classList.add('file-selected');
+            const content = dropZone.querySelector('.drop-zone-content');
+            content.innerHTML = `
+                <i data-lucide="file-check" style="width: 48px; height: 48px; margin-bottom: var(--space-md); color: var(--success-500);"></i>
+                <h3 style="margin-bottom: var(--space-sm); color: var(--success-800);">${file.name}</h3>
+                <p style="color: var(--success-600); margin-bottom: var(--space-md);">Size: ${formatFileSize(file.size)}</p>
+                <button type="button" class="btn btn-secondary" onclick="clearFile()">
+                    <i data-lucide="x"></i>
+                    Remove File
+                </button>
+            `;
+            lucide.createIcons();
+        }
+
+        function clearFile() {
+            fileInput.value = '';
+            dropZone.classList.remove('file-selected');
+            const content = dropZone.querySelector('.drop-zone-content');
+            content.innerHTML = `
+                <i data-lucide="upload-cloud" style="width: 48px; height: 48px; margin-bottom: var(--space-md); color: var(--primary-500);"></i>
+                <h3 style="margin-bottom: var(--space-sm); color: var(--secondary-800);">Drop your PDF here</h3>
+                <p style="color: var(--secondary-600); margin-bottom: var(--space-md);">or click to browse files</p>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('pdfFile').click()">
+                    <i data-lucide="folder"></i>
+                    Browse Files
+                </button>
+            `;
+            lucide.createIcons();
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Form submission
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(uploadForm);
+            
+            if (!formData.get('pdf') || !formData.get('format') || !formData.get('exam_type')) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+
+            // Show progress section
+            progressSection.style.display = 'block';
+            progressSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Disable upload button
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = '<div class="spinner"></div> Processing...';
+
+            try {
+                // Start upload
+                const response = await fetch('/api/upload-result', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Start polling for progress
+                    pollProgress(result.upload_id);
+                } else {
+                    throw new Error(result.error || 'Upload failed');
+                }
+            } catch (error) {
+                showUploadError(error.message);
+            }
+        });
+
+        // Progress polling
+        async function pollProgress(uploadId) {
+            try {
+                const response = await fetch(`/api/upload-progress/${uploadId}`);
+                const progress = await response.json();
+                
+                updateProgressUI(progress);
+                
+                if (progress.status === 'completed') {
+                    showSuccess(progress.final_result);
+                } else if (progress.status === 'error') {
+                    showUploadError(progress.error?.message || 'Processing failed');
+                } else {
+                    // Continue polling
+                    setTimeout(() => pollProgress(uploadId), 2000);
+                }
+            } catch (error) {
+                showUploadError('Failed to get progress updates');
+            }
+        }
+
+        function updateProgressUI(progress) {
+            // Update overall progress
+            let overallProgress = 0;
+            if (progress.parsing?.status === 'completed') overallProgress += 33;
+            if (progress.firebase?.status === 'completed') overallProgress += 33;
+            if (progress.json?.status === 'completed') overallProgress += 34;
+            
+            document.getElementById('overallProgress').style.width = overallProgress + '%';
+            document.getElementById('overallPercentage').textContent = overallProgress + '%';
+
+            // Update stages
+            updateStage('parsing', progress.parsing);
+            updateStage('firebase', progress.firebase);
+            updateStage('json', progress.json);
+        }
+
+        function updateStage(stageName, stageData) {
+            const stage = document.getElementById(`${stageName}Stage`);
+            const description = document.getElementById(`${stageName}Description`);
+            const status = document.getElementById(`${stageName}Status`);
+            const spinner = status.querySelector('.spinner');
+            const icon = status.querySelector('.progress-stage-status-icon');
+
+            if (!stageData) return;
+
+            // Update description
+            description.textContent = stageData.message || 'Processing...';
+
+            // Update stage status
+            stage.classList.remove('active', 'completed', 'error');
+            
+            if (stageData.status === 'completed') {
+                stage.classList.add('completed');
+                spinner.classList.add('hidden');
+                icon.innerHTML = '<i data-lucide="check-circle"></i>';
+                icon.classList.remove('hidden');
+            } else if (stageData.status === 'error') {
+                stage.classList.add('error');
+                spinner.classList.add('hidden');
+                icon.innerHTML = '<i data-lucide="x-circle"></i>';
+                icon.classList.remove('hidden');
+            } else if (stageData.status === 'uploading' || stageData.status === 'parsing' || stageData.status === 'saving') {
+                stage.classList.add('active');
+                spinner.classList.remove('hidden');
+                icon.classList.add('hidden');
+            }
+
+            lucide.createIcons();
+        }
+
+        function showSuccess(result) {
+            document.getElementById('resultsSummary').classList.remove('hidden');
+            document.getElementById('summaryContent').innerHTML = `
+                <p><strong>Successfully processed ${result.processed_count} student records</strong></p>
+                <p>• Firebase: ${result.firebase.students_saved || 0} students saved</p>
+                <p>• JSON file: ${result.json_file}</p>
+                <p>• Processing completed with PDF filename tracking</p>
+            `;
+            
+            // Reset form
+            setTimeout(() => {
+                uploadBtn.disabled = false;
+                uploadBtn.innerHTML = '<i data-lucide="rocket"></i> Start Processing';
+                lucide.createIcons();
+            }, 1000);
+        }
+
+        function showUploadError(message) {
+            document.getElementById('errorDisplay').classList.remove('hidden');
+            document.getElementById('errorContent').textContent = message;
+            
+            uploadBtn.disabled = false;
+            uploadBtn.innerHTML = '<i data-lucide="rocket"></i> Start Processing';
+            lucide.createIcons();
+        }
+
+        function showError(message) {
+            // Create a temporary alert
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-error';
+            alert.innerHTML = `
+                <i data-lucide="alert-triangle" class="alert-icon"></i>
+                <span>${message}</span>
+            `;
+            
+            uploadForm.insertBefore(alert, uploadForm.firstChild);
+            lucide.createIcons();
+            
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        function resetForm() {
+            progressSection.style.display = 'none';
+            document.getElementById('resultsSummary').classList.add('hidden');
+            document.getElementById('errorDisplay').classList.add('hidden');
+            clearFile();
+            uploadForm.reset();
+            
+            uploadBtn.disabled = false;
+            uploadBtn.innerHTML = '<i data-lucide="rocket"></i> Start Processing';
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
