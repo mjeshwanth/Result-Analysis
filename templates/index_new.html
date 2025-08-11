@@ -35,8 +35,8 @@
             <ul class="navbar-menu">
                 <li><a href="/" class="navbar-link active">Dashboard</a></li>
                 <li><a href="/upload" class="navbar-link">Upload Results</a></li>
-                <li><a href="/placement" class="navbar-link">Placement</a></li>
                 <li><a href="/training-placement" class="navbar-link">Training & Placement</a></li>
+                <li><a href="/notifications" class="navbar-link">Notifications</a></li>
                 <li><a href="{{ url_for('data_files') }}" class="navbar-link">Data Files</a></li>
             </ul>
             
@@ -172,45 +172,41 @@
                 </div>
             </div>
 
-            <!-- Placement Analytics Card -->
+            <!-- Notifications Management Card -->
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        <i data-lucide="briefcase" style="display: inline-block; margin-right: 0.5rem;"></i>
-                        Placement Analytics
+                        <i data-lucide="bell" style="display: inline-block; margin-right: 0.5rem;"></i>
+                        Notifications Management
                     </div>
                     <div class="card-description">
-                        Identify placement-eligible students and generate analytics reports
+                        Create, edit, and manage system notifications and announcements
                     </div>
                 </div>
                 <div class="card-content">
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         <li style="display: flex; align-items: center; margin-bottom: 0.75rem; color: var(--secondary-600);">
                             <i data-lucide="check" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
-                            CGPA-based eligibility filtering
+                            Create notices and announcements
                         </li>
                         <li style="display: flex; align-items: center; margin-bottom: 0.75rem; color: var(--secondary-600);">
                             <i data-lucide="check" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
-                            Backlog analysis and tracking
+                            Upload attachments and documents
                         </li>
                         <li style="display: flex; align-items: center; margin-bottom: 0.75rem; color: var(--secondary-600);">
                             <i data-lucide="check" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
-                            Branch-wise and class-wise reports
+                            Set priority levels and categories
                         </li>
                         <li style="display: flex; align-items: center; color: var(--secondary-600);">
                             <i data-lucide="check" style="width: 16px; height: 16px; color: var(--success-500); margin-right: 0.5rem;"></i>
-                            Export placement-ready student lists
+                            Schedule and manage publication
                         </li>
                     </ul>
                 </div>
-                <div class="card-footer" style="display: flex; gap: 0.75rem; flex-direction: column;">
-                    <a href="/placement" class="btn btn-primary w-full">
-                        <i data-lucide="briefcase"></i>
-                        View Placement Dashboard
-                    </a>
-                    <a href="/training-placement" class="btn btn-outline w-full">
-                        <i data-lucide="users"></i>
-                        Training & Placement Analysis
+                <div class="card-footer">
+                    <a href="/notifications" class="btn btn-primary w-full">
+                        <i data-lucide="bell"></i>
+                        Manage Notifications
                     </a>
                 </div>
             </div>

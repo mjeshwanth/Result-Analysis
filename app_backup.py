@@ -177,17 +177,6 @@ def training_placement():
         logger.error(f"Error rendering training placement page: {e}")
         return jsonify({"error": "Failed to load training placement page"}), 500
 
-@app.route('/notifications')
-def notifications_management():
-    try:
-        # Check if user is authenticated
-        if 'user_token' not in session:
-            return redirect(url_for('admin_login'))
-        return render_template('notifications.html')
-    except Exception as e:
-        logger.error(f"Error rendering notifications page: {e}")
-        return jsonify({"error": "Failed to load notifications page"}), 500
-
 # -----------------------------------------------------------------------------
 # Firebase variables and setup
 # -----------------------------------------------------------------------------
@@ -1229,6 +1218,166 @@ def process_upload_background(file_path, format_type, exam_type, original_filena
                 os.remove(file_path)
             except Exception as e:
                 logger.warning(f"Failed to delete temp file {file_path}: {e}")
+
+
+# -----------------------------------------------------------------------------
+# Run server if script is run directly
+# -----------------------------------------------------------------------------
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=True)
+    """
+    Analyze students from JSON data files for placement eligibility
+    """
+    try:
+        all_students = []
+        data_dir = os.path.join(os.path.dirname(__file__), 'data')
+        
+        # Read all JSON files in data directory
+        if os.path.exists(data_dir):
+            for filename in os.listdir(data_dir):
+                if filename.endswith('.json'):
+                    file_path = os.path.join(data_dir, filename)
+                    try:
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                            if 'students' in data:
+                                for student in data['students']:
+                                    # Calculate backlogs from subjectGrades
+                                    backlogs = 0
+                                    if 'subjectGrades' in student:
+                                        for subject in student['subjectGrades']:
+                                            grade = subject.get('grade', '').upper()
+                                            # Count F grades as backlogs
+                                            if grade == 'F':
+                                                backlogs += 1
+                                    
+                                    # Extract branch from student ID
+                                    student_id = student.get('student_id', '')
+                                    branch = 'Unknown'
+                                    branch_name = 'Unknown'
+                                    
+                                    # Pattern for autonomous: 24B81A0101 -> A01 (Computer Science)
+                                    # Pattern for JNTUK: Similar patterns
+                                    if len(student_id) >= 8:
+                                        branch_code = student_id[6:8]  # Extract branch code
+                                        if branch_code == 'A0':
+                                            branch = 'A01'
+                                            branch_name = 'Computer Science'
+                                        elif branch_code == 'A1':
+                                            branch = 'A01'
+                                            branch_name = 'Computer Science'
+                                        elif branch_code == 'A2':
+                                            branch = 'A02'
+                                            branch_name = 'Electrical'
+                                        elif branch_code == 'A3':
+                                            branch = 'A03'
+                                            branch_name = 'Mechanical'
+                                        elif branch_code == 'A4':
+                                            branch = 'A04'
+                                            branch_name = 'Civil'
+                                        elif branch_code == 'A5':
+                                            branch = 'A05'
+                                            branch_name = 'Electronics'
+                                        else:
+                                            # Try other patterns
+                                            if 'A01' in student_id:
+                                                branch = 'A01'
+                                                branch_name = 'Computer Science'
+                                            elif 'A02' in student_id:
+                                                branch = 'A02'
+                                                branch_name = 'Electrical'
+                                            elif 'A03' in student_id:
+                                                branch = 'A03'
+                                                branch_name = 'Mechanical'
+                                            elif 'A04' in student_id:
+                                                branch = 'A04'
+                                                branch_name = 'Civil'
+                                            elif 'A05' in student_id:
+                                                branch = 'A05'
+                                                branch_name = 'Electronics'
+                                    
+                                    # Get CGPA (use SGPA if CGPA not available)
+                                    cgpa = student.get('cgpa', student.get('sgpa', 0.0))
+                                    
+                                    # Determine semesters completed (estimate from student ID)
+                                    semesters_completed = 1  # Default
+                                    if student_id.startswith('24'):
+                                        semesters_completed = 1  # Current 1st year
+                                    elif student_id.startswith('23'):
+                                        semesters_completed = 3  # 2nd year
+                                    elif student_id.startswith('22'):
+                                        semesters_completed = 5  # 3rd year
+                                    elif student_id.startswith('21'):
+                                        semesters_completed = 7  # 4th year
+                                    
+                                    # Placement eligibility criteria
+                                    # Standard criteria: CGPA >= 6.5 and backlogs <= 3
+                                    eligible = cgpa >= 6.5 and backlogs <= 3
+                                    
+                                    # Training need assessment
+                                    needs_training = cgpa < 7.0 or backlogs > 1
+                                    
+                                    student_analysis = {
+                                        'student_id': student_id,
+                                        'branch': branch,
+                                        'branch_name': branch_name,
+                                        'cgpa': round(cgpa, 2),
+                                        'backlogs': backlogs,
+                                        'semesters_completed': semesters_completed,
+                                        'eligible': eligible,
+                                        'needs_training': needs_training,
+                                        'semester': student.get('semester', 'Unknown'),
+                                        'university': student.get('university', 'Unknown'),
+                                        'format': data.get('metadata', {}).get('format', 'unknown'),
+                                        'exam_type': student.get('examType', 'regular')
+                                    }
+                                    
+                                    all_students.append(student_analysis)
+                                    
+                    except Exception as e:
+                        logger.warning(f"Error processing file {filename}: {e}")
+                        continue
+        
+        # Sort students by CGPA (highest first)
+        all_students.sort(key=lambda x: x['cgpa'], reverse=True)
+        
+        # Calculate statistics
+        total_students = len(all_students)
+        eligible_students = len([s for s in all_students if s['eligible']])
+        avg_cgpa = round(sum(s['cgpa'] for s in all_students) / total_students, 2) if total_students > 0 else 0
+        zero_backlogs = len([s for s in all_students if s['backlogs'] == 0])
+        
+        result = {
+            'success': True,
+            'students': all_students,
+            'statistics': {
+                'total_students': total_students,
+                'eligible_students': eligible_students,
+                'eligibility_percentage': round((eligible_students / total_students * 100), 1) if total_students > 0 else 0,
+                'average_cgpa': avg_cgpa,
+                'zero_backlogs': zero_backlogs,
+                'zero_backlogs_percentage': round((zero_backlogs / total_students * 100), 1) if total_students > 0 else 0
+            }
+        }
+        
+        logger.info(f"Placement analysis completed: {total_students} students analyzed")
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error in placement analysis: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'students': [],
+            'statistics': {
+                'total_students': 0,
+                'eligible_students': 0,
+                'eligibility_percentage': 0,
+                'average_cgpa': 0,
+                'zero_backlogs': 0,
+                'zero_backlogs_percentage': 0
+            }
+        }), 500
 
 
 # -----------------------------------------------------------------------------

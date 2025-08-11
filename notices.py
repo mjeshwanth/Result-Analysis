@@ -187,3 +187,160 @@ def delete_notice(notice_id):
             'status': 'error',
             'error': str(e)
         }), 500
+
+@notices.route('/api/notices/<notice_id>', methods=['PUT'])
+def update_notice(notice_id):
+    if not FIREBASE_ENABLED:
+        return jsonify({'error': 'Firebase not configured'}), 503
+        
+    try:
+        # Check if notice exists
+        notice_ref = db.collection('notices').document(notice_id)
+        notice = notice_ref.get()
+
+        if not notice.exists:
+            return jsonify({
+                'status': 'error',
+                'error': 'Notice not found'
+            }), 404
+
+        # Get form data
+        title = request.form.get('title')
+        content = request.form.get('content')
+        category = request.form.get('category')
+        priority = request.form.get('priority')
+        valid_until = request.form.get('validUntil')
+        status = request.form.get('status', 'active')
+
+        if not all([title, content, category, priority]):
+            return jsonify({
+                'status': 'error',
+                'error': 'Missing required fields'
+            }), 400
+
+        # Get current notice data
+        current_data = notice.to_dict()
+        attachments = current_data.get('attachments', [])
+
+        # Handle new file uploads
+        files = request.files.getlist('attachments')
+        
+        for file in files:
+            if file and allowed_file(file.filename):
+                if file.content_length and file.content_length > MAX_FILE_SIZE:
+                    return jsonify({
+                        'status': 'error',
+                        'error': f'File {file.filename} exceeds maximum size of 10MB'
+                    }), 400
+
+                # Generate unique filename
+                ext = os.path.splitext(file.filename)[1]
+                unique_filename = f"{uuid.uuid4()}{ext}"
+                
+                # Upload to Firebase Storage
+                blob = bucket.blob(f"notices/{unique_filename}")
+                blob.upload_from_string(
+                    file.read(),
+                    content_type=file.content_type
+                )
+                
+                # Make public and get URL
+                blob.make_public()
+                
+                attachments.append({
+                    'fileName': file.filename,
+                    'fileUrl': blob.public_url,
+                    'fileType': file.content_type,
+                    'uploadedAt': datetime.utcnow().isoformat()
+                })
+
+        # Update notice data
+        update_data = {
+            'title': title,
+            'content': content,
+            'category': category,
+            'priority': priority,
+            'status': status,
+            'attachments': attachments,
+            'updatedAt': datetime.utcnow().isoformat()
+        }
+
+        if valid_until:
+            update_data['validUntil'] = valid_until
+
+        # Update document
+        notice_ref.update(update_data)
+
+        return jsonify({
+            'status': 'success',
+            'message': 'Notice updated successfully'
+        })
+
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'error': str(e)
+        }), 500
+
+@notices.route('/api/notices/<notice_id>/attachments/<attachment_index>', methods=['DELETE'])
+def delete_attachment(notice_id, attachment_index):
+    if not FIREBASE_ENABLED:
+        return jsonify({'error': 'Firebase not configured'}), 503
+        
+    try:
+        # Get the notice
+        notice_ref = db.collection('notices').document(notice_id)
+        notice = notice_ref.get()
+
+        if not notice.exists:
+            return jsonify({
+                'status': 'error',
+                'error': 'Notice not found'
+            }), 404
+
+        notice_data = notice.to_dict()
+        attachments = notice_data.get('attachments', [])
+        
+        try:
+            index = int(attachment_index)
+            if 0 <= index < len(attachments):
+                # Delete file from storage
+                attachment = attachments[index]
+                if 'fileUrl' in attachment:
+                    try:
+                        blob_name = attachment['fileUrl'].split('/')[-1]
+                        blob = bucket.blob(f"notices/{blob_name}")
+                        blob.delete()
+                    except Exception as e:
+                        print(f"Error deleting file: {str(e)}")
+                
+                # Remove from attachments list
+                attachments.pop(index)
+                
+                # Update notice
+                notice_ref.update({
+                    'attachments': attachments,
+                    'updatedAt': datetime.utcnow().isoformat()
+                })
+                
+                return jsonify({
+                    'status': 'success',
+                    'message': 'Attachment deleted successfully'
+                })
+            else:
+                return jsonify({
+                    'status': 'error',
+                    'error': 'Invalid attachment index'
+                }), 400
+                
+        except ValueError:
+            return jsonify({
+                'status': 'error',
+                'error': 'Invalid attachment index'
+            }), 400
+
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'error': str(e)
+        }), 500
