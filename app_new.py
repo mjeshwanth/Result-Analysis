@@ -14,10 +14,12 @@ with open('serviceAccount.json', 'r') as f:
     service_account = json.load(f)
 
 # Initialize Firebase with explicit project ID
+
+# Correct Firebase Storage bucket URL (should end with .appspot.com)
 cred = credentials.Certificate('serviceAccount.json')
 firebase_app = firebase_admin.initialize_app(cred, {
     'projectId': service_account['project_id'],
-    'storageBucket': 'plant-ec218.firebasestorage.app'
+    'storageBucket': 'plant-ec218.appspot.com'
 })
 
 # Initialize Firestore and Storage using Firebase Admin SDK
@@ -27,7 +29,7 @@ bucket = storage.bucket(app=firebase_app)
 # Firebase configuration for frontend
 firebase_config = {
     'projectId': service_account['project_id'],
-    'storageBucket': 'plant-ec218.firebasestorage.app'
+    'storageBucket': 'plant-ec218.appspot.com'
 }
 
 @app.route('/')
@@ -547,49 +549,41 @@ def batch_upload_to_firebase(batch_records, year, semesters, exam_types, format_
     FIREBASE_BATCH_LIMIT = 500
     current_batch = db.batch()
     current_batch_count = 0
-    
+
     print(f"💾 Processing {len(batch_records)} records for Firebase upload...")
-    
-    # Pre-check duplicates in bulk to reduce individual queries
+
+    # Prepare all doc IDs for this batch
     student_ids = [student_data.get('student_id', '') for student_data in batch_records]
     detected_semester = batch_records[0].get('semester', semesters[0] if semesters else 'Unknown') if batch_records else 'Unknown'
     detected_exam_type = exam_types[0] if exam_types else 'regular'
-    
-    # Bulk duplicate check
-    duplicate_doc_ids = []
-    for student_id in student_ids:
-        if student_id:
-            student_doc_id = f"{student_id}_{year.replace(' ', '_')}_{detected_semester.replace(' ', '_')}_{detected_exam_type}"
-            duplicate_doc_ids.append(student_doc_id)
-    
-    # Check for existing documents in smaller batches to avoid overwhelming Firebase
-    existing_docs = set()
-    for i in range(0, len(duplicate_doc_ids), 10):  # Check 10 at a time
-        batch_doc_ids = duplicate_doc_ids[i:i+10]
-        try:
-            for doc_id in batch_doc_ids:
-                existing_doc = db.collection('student_results').document(doc_id).get()
-                if existing_doc.exists:
-                    existing_docs.add(doc_id)
-        except Exception as e:
-            print(f"⚠️ Error in bulk duplicate check: {str(e)}")
-    
-    print(f"📊 Found {len(existing_docs)} existing records out of {len(batch_records)}")
-    
-    # Process each student record
+    doc_id_map = {}
+    doc_refs = []
     for student_data in batch_records:
         student_id = student_data.get('student_id', '')
         if not student_id:
             continue
-        
-        # Create unique document ID for this student's record
         student_doc_id = f"{student_id}_{year.replace(' ', '_')}_{detected_semester.replace(' ', '_')}_{detected_exam_type}"
-        
-        # Skip if already exists (from our bulk check)
+        doc_id_map[student_doc_id] = student_data
+        doc_refs.append(db.collection('student_results').document(student_doc_id))
+
+    # Bulk fetch all existing docs in this batch
+    existing_docs = set()
+    try:
+        fetched_docs = firestore.client().get_all(doc_refs)
+        for doc in fetched_docs:
+            if doc.exists:
+                existing_docs.add(doc.id)
+    except Exception as e:
+        print(f"⚠️ Error in bulk duplicate check: {str(e)}")
+
+    print(f"📊 Found {len(existing_docs)} existing records out of {len(batch_records)}")
+
+    # Process each student record
+    for student_doc_id, student_data in doc_id_map.items():
         if student_doc_id in existing_docs:
             students_skipped += 1
             continue
-        
+
         # Add metadata to student record
         student_data.update({
             'year': year,
@@ -604,13 +598,13 @@ def batch_upload_to_firebase(batch_records, year, semesters, exam_types, format_
             'supplyExamTypes': [],
             'isSupplyOnly': False
         })
-        
+
         # Add to current Firebase batch
         student_ref = db.collection('student_results').document(student_doc_id)
         current_batch.set(student_ref, student_data)
         students_saved += 1
         current_batch_count += 1
-        
+
         # Commit batch when it reaches Firebase limit
         if current_batch_count >= FIREBASE_BATCH_LIMIT:
             try:
@@ -625,7 +619,7 @@ def batch_upload_to_firebase(batch_records, year, semesters, exam_types, format_
                 current_batch = db.batch()
                 current_batch_count = 0
                 students_saved -= current_batch_count  # Adjust count on failure
-    
+
     # Commit any remaining operations
     if current_batch_count > 0:
         try:
@@ -635,7 +629,7 @@ def batch_upload_to_firebase(batch_records, year, semesters, exam_types, format_
             print(f"❌ Error committing final Firebase batch: {str(e)}")
             errors.append(f"Final Firebase batch commit failed: {str(e)}")
             students_saved -= current_batch_count  # Adjust count on failure
-    
+
     print(f"📊 Firebase batch upload complete: {students_saved} new, {students_skipped} duplicates")
     return students_saved, students_skipped, errors
 
@@ -932,11 +926,11 @@ def upload_result():
             # Process in batches using generators
             if format_type.lower() == 'jntuk':
                 from parser.parser_jntuk import parse_jntuk_pdf_generator
-                batch_generator = parse_jntuk_pdf_generator(temp_file_path, batch_size=50)
+                batch_generator = parse_jntuk_pdf_generator(temp_file_path, batch_size=500)
             elif format_type.lower() == 'autonomous':
                 from parser.parser_autonomous import parse_autonomous_pdf_generator
                 semester_info = f"{year} {semesters[0]}" if semesters else f"{year} Mixed"
-                batch_generator = parse_autonomous_pdf_generator(temp_file_path, semester=semester_info, university="Autonomous", batch_size=50)
+                batch_generator = parse_autonomous_pdf_generator(temp_file_path, semester=semester_info, university="Autonomous", batch_size=500)
             else:
                 return jsonify({'error': f'Unsupported format: {format_type}'}), 400
             
@@ -1001,9 +995,11 @@ def upload_result():
             blob = bucket.blob(filename)
             content = file.read()
             
+            # Upload the PDF to Firebase Storage
             blob.upload_from_string(
                 content,
-                content_type='application/pdf'
+                content_type='application/pdf',
+                timeout=120
             )
             
             # Make the file public and get URL

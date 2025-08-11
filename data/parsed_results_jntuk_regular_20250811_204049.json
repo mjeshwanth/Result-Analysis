@@ -1,0 +1,2238 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-11T20:40:49.476142",
+    "total_students": 100,
+    "original_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+    "processing_status": "in_progress",
+    "year": "Unknown",
+    "semesters": [
+      "Unknown"
+    ],
+    "last_batch_processed": 2,
+    "last_updated": "2025-08-11T20:43:40.176122"
+  },
+  "firebase_upload": {
+    "batches_completed": 2,
+    "students_saved": 17,
+    "duplicates_skipped": 33,
+    "upload_started_at": "",
+    "upload_completed_at": ""
+  },
+  "students": [
+    {
+      "student_id": "17B81A0106",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621011",
+          "subject": "PROBABILITY AND STATISTICS",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "17B81A0242",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621024",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 28,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "17B81A03A0",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621032",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "17B81A05I3",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R1621058",
+          "subject": "PYTHON PROGRAMMING LAB",
+          "internals": 0,
+          "grade": "C",
+          "credits": 2.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0213",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621022",
+          "subject": "ELECTRICAL MACHINES-I",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0262",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621022",
+          "subject": "ELECTRICAL MACHINES-I",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0322",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1621026",
+          "subject": "MANAGERIAL ECONOMICS & FINANCIAL ANALYSI",
+          "internals": 11,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R1621031",
+          "subject": "METALLURGY & MATERIALS SCIENCE",
+          "internals": 15,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R1621032",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 3,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621033",
+          "subject": "THERMODYNAMICS",
+          "internals": 7,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621034",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0330",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621032",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 9,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0462",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621026",
+          "subject": "MANAGERIAL ECONOMICS & FINANCIAL ANALYSI",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621044",
+          "subject": "NETWORK ANALYSIS",
+          "internals": 17,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0468",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621045",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESS",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0491",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R1621026",
+          "subject": "MANAGERIAL ECONOMICS & FINANCIAL ANALYSI",
+          "internals": 22,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "18B81A0540",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621054",
+          "subject": "PYTHON PROGRAMMING",
+          "internals": 0,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0115",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921012",
+          "subject": "STRENGTH OF MATERIALS-I",
+          "internals": 12,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921016",
+          "subject": "TRANSPORTATION ENGINEERING-I",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0116",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0117",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921012",
+          "subject": "STRENGTH OF MATERIALS-I",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0121",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921013",
+          "subject": "FLUID MECHANICS",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0262",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921022",
+          "subject": "ELECTRICAL MACHINES-I",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0275",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921021",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS - II",
+          "internals": 5,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921022",
+          "subject": "ELECTRICAL MACHINES-I",
+          "internals": 5,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921023",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 5,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921024",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 5,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921025",
+          "subject": "THERMAL AND HYDRO PRIME MOVERS",
+          "internals": 5,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921026",
+          "subject": "MANAGERIAL ECONOMICS & FINANCIAL ANALYSI",
+          "internals": 5,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0276",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921024",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0284",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 6.0,
+      "subjectGrades": [
+        {
+          "code": "R1921024",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 9,
+          "grade": "B",
+          "credits": 3.0
+        },
+        {
+          "code": "R1921025",
+          "subject": "THERMAL AND HYDRO PRIME MOVERS",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0304",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0313",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0314",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 16,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0325",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 16,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0330",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0343",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921034",
+          "subject": "PRODUCTION TECHNOLOGY",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921035",
+          "subject": "THERMODYNAMICS",
+          "internals": 10,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0353",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0365",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921034",
+          "subject": "PRODUCTION TECHNOLOGY",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0369",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921031",
+          "subject": "VECTOR CALCULUS & FOURIER TRANSFORMS",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A04F4",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1921043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0504",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1921053",
+          "subject": "PYTHON PROGRAMMING",
+          "internals": 12,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B81A0534",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 6.0,
+      "subjectGrades": [
+        {
+          "code": "R1921053",
+          "subject": "PYTHON PROGRAMMING",
+          "internals": 15,
+          "grade": "B",
+          "credits": 3.0
+        },
+        {
+          "code": "R1921054",
+          "subject": "DATA STRUCTURES",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1921056",
+          "subject": "COMPUTER ORGANIZATION",
+          "internals": 11,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B85A0112",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1621011",
+          "subject": "PROBABILITY AND STATISTICS",
+          "internals": 14,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "19B85A0424",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1621026",
+          "subject": "MANAGERIAL ECONOMICS & FINANCIAL ANALYSI",
+          "internals": 14,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 15,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621044",
+          "subject": "NETWORK ANALYSIS",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1621045",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESS",
+          "internals": 15,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0101",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021013",
+          "subject": "FLUID MECHANICS",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0108",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021012",
+          "subject": "STRENGTH OF MATERIALS-I",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0111",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021014",
+          "subject": "SURVEYING AND GEOMETRICS",
+          "internals": 18,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0136",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0142",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021014",
+          "subject": "SURVEYING AND GEOMETRICS",
+          "internals": 18,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0146",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 25,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0210",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 18,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0227",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0228",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 23,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0241",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021023",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS-II",
+          "internals": 21,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0257",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0278",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0281",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021024",
+          "subject": "DC MACHINES AND TRANSFORMERS",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0288",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0289",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021024",
+          "subject": "DC MACHINES AND TRANSFORMERS",
+          "internals": 18,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021025",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0291",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 16,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0292",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021022",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021023",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS-II",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021024",
+          "subject": "DC MACHINES AND TRANSFORMERS",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021025",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0294",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 1.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 17,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021022",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 18,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021024",
+          "subject": "DC MACHINES AND TRANSFORMERS",
+          "internals": 19,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021025",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A02A3",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 16,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A02B5",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 2.0,
+      "subjectGrades": [
+        {
+          "code": "R2021021",
+          "subject": "MATHEMATICS-IV",
+          "internals": 17,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021025",
+          "subject": "ELECTRO MAGNETIC FIELDS",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0306",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021031",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 10,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0311",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021031",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 20,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0325",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 24,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021031",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 11,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021034",
+          "subject": "KINEMATICS OF MACHINERY",
+          "internals": 17,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0328",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 21,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0334",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 24,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021031",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0342",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0343",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 28,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0354",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021032",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0356",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 24,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021032",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 14,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0362",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 26,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0368",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021031",
+          "subject": "MECHANICS OF SOLIDS",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021032",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0369",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0384",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021032",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0388",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0393",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021032",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 24,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021033",
+          "subject": "PRODUCTION TECHNOLOGY",
+          "internals": 17,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0394",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021032",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 22,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0413",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 22,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0428",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 23,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0431",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0432",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0443",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0453",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0462",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 19,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0466",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021044",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESSE",
+          "internals": 20,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0470",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 24,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021044",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESSE",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0479",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 24,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 18,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04A8",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 24,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04B6",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04B7",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 18,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 14,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04D4",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04D5",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 23,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04E0",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021044",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESSE",
+          "internals": 21,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04G3",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021044",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESSE",
+          "internals": 23,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04G9",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 24,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04H6",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 19,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04H9",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021042",
+          "subject": "SWITCHING THEORY AND LOGIC DESIGN",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04I2",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 23,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A04I4",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 2.0,
+      "subjectGrades": [
+        {
+          "code": "R2021041",
+          "subject": "ELECTRONIC DEVICES AND CIRCUITS",
+          "internals": 19,
+          "grade": "E",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021043",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 19,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R2021044",
+          "subject": "RANDOM VARIABLES AND STOCHASTIC PROCESSE",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0512",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 6,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021051",
+          "subject": "OBJECT ORIENTED PROGRAMMING THROUGH C++",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021054",
+          "subject": "MATHEMATICAL FOUNDATIONS OF COMPUTER SCI",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0523",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021051",
+          "subject": "OBJECT ORIENTED PROGRAMMING THROUGH C++",
+          "internals": 25,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021052",
+          "subject": "OPERATING SYSTEMS",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021053",
+          "subject": "SOFTWARE ENGINEERING",
+          "internals": 18,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0526",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2021052",
+          "subject": "OPERATING SYSTEMS",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0546",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 6.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 24,
+          "grade": "B",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0549",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021011",
+          "subject": "MATHEMATICS-III",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A0595",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021051",
+          "subject": "OBJECT ORIENTED PROGRAMMING THROUGH C++",
+          "internals": 29,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021054",
+          "subject": "MATHEMATICAL FOUNDATIONS OF COMPUTER SCI",
+          "internals": 26,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A05A5",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R2021054",
+          "subject": "MATHEMATICAL FOUNDATIONS OF COMPUTER SCI",
+          "internals": 23,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    },
+    {
+      "student_id": "20B81A1230",
+      "semester": "Semester 1",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2021052",
+          "subject": "OPERATING SYSTEMS",
+          "internals": 21,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021121",
+          "subject": "DATABASE MANAGEMENT SYSTEMS",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2021122",
+          "subject": "DISCRETE MATHEMATICS AND GRAPH THEORY",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "775be1a9ace517c7d8715fbda7dd7cac.pdf",
+      "source_document": "775be1a9ace517c7d8715fbda7dd7cac.pdf"
+    }
+  ]
+}

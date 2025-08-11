@@ -4,8 +4,10 @@ from datetime import datetime
 from collections import defaultdict
 import time
 
-def parse_jntuk_pdf_generator(file_path, batch_size=50):
+def parse_jntuk_pdf_generator(file_path, batch_size=None):
     """Generator version that yields batches of student records for real-time processing"""
+    if batch_size is None:
+        batch_size = 500
     print(f"🚀 Starting optimized batch JNTUK parsing of: {file_path}")
     start_time = time.time()
     
@@ -56,6 +58,7 @@ def parse_jntuk_pdf_generator(file_path, batch_size=50):
 
             # Process students from this page
             page_students = []
+            page_student_records = []
             
             # Table extraction
             try:
@@ -137,6 +140,27 @@ def parse_jntuk_pdf_generator(file_path, batch_size=50):
                                 if htno not in processed_students:
                                     processed_students.add(htno)
                                     page_students.append(htno)
+                                    # Add full student record for batching
+                                    student_data = results[htno]
+                                    if student_data.get('subjectGrades'):
+                                        # Calculate SGPA
+                                        total_points = 0
+                                        total_credits = 0
+                                        for subject in student_data['subjectGrades']:
+                                            grade = subject.get('grade', 'F')
+                                            credits = subject.get('credits', 0)
+                                            points = grade_points.get(grade, 0)
+                                            total_points += points * credits
+                                            total_credits += credits
+                                        sgpa = round(total_points / total_credits, 2) if total_credits > 0 else 0.0
+                                        page_student_records.append({
+                                            "student_id": student_data['student_id'],
+                                            "semester": student_data['semester'],
+                                            "university": student_data['university'],
+                                            "upload_date": student_data['upload_date'],
+                                            "sgpa": sgpa,
+                                            "subjectGrades": student_data['subjectGrades']
+                                        })
                                     
                             except (ValueError, TypeError, AttributeError):
                                 continue
@@ -194,6 +218,27 @@ def parse_jntuk_pdf_generator(file_path, batch_size=50):
                                     if htno not in processed_students:
                                         processed_students.add(htno)
                                         page_students.append(htno)
+                                        # Add full student record for batching
+                                        student_data = results[htno]
+                                        if student_data.get('subjectGrades'):
+                                            # Calculate SGPA
+                                            total_points = 0
+                                            total_credits = 0
+                                            for subject in student_data['subjectGrades']:
+                                                grade = subject.get('grade', 'F')
+                                                credits = subject.get('credits', 0)
+                                                points = grade_points.get(grade, 0)
+                                                total_points += points * credits
+                                                total_credits += credits
+                                            sgpa = round(total_points / total_credits, 2) if total_credits > 0 else 0.0
+                                            page_student_records.append({
+                                                "student_id": student_data['student_id'],
+                                                "semester": student_data['semester'],
+                                                "university": student_data['university'],
+                                                "upload_date": student_data['upload_date'],
+                                                "sgpa": sgpa,
+                                                "subjectGrades": student_data['subjectGrades']
+                                            })
                                         
                         except (ValueError, IndexError, AttributeError):
                             continue
@@ -201,43 +246,16 @@ def parse_jntuk_pdf_generator(file_path, batch_size=50):
                 pass
             
             # Yield batch when we have enough students
-            if len(page_students) >= batch_size:
-                batch_records = []
-                students_to_process = page_students[:batch_size]
-                
-                for htno in students_to_process:
-                    student_data = results[htno]
-                    if student_data.get('subjectGrades'):
-                        # Calculate SGPA
-                        total_points = 0
-                        total_credits = 0
-                        
-                        for subject in student_data['subjectGrades']:
-                            grade = subject.get('grade', 'F')
-                            credits = subject.get('credits', 0)
-                            points = grade_points.get(grade, 0)
-                            total_points += points * credits
-                            total_credits += credits
-                        
-                        sgpa = round(total_points / total_credits, 2) if total_credits > 0 else 0.0
-                        
-                        batch_records.append({
-                            "student_id": student_data['student_id'],
-                            "semester": student_data['semester'],
-                            "university": student_data['university'],
-                            "upload_date": student_data['upload_date'],
-                            "sgpa": sgpa,
-                            "subjectGrades": student_data['subjectGrades']
-                        })
-                
+            if len(page_student_records) >= batch_size:
+                batch_records = page_student_records[:batch_size]
                 if batch_records:
                     batch_count += 1
                     students_processed += len(batch_records)
                     print(f"🚀 Yielding batch {batch_count}: {len(batch_records)} students (Total: {students_processed})")
                     yield batch_records
-                
-                # Remove processed students from page_students
+                # Remove processed students from page_students and page_student_records
                 page_students = page_students[batch_size:]
+                page_student_records = page_student_records[batch_size:]
             
             # Also check if we've accumulated enough students across all results
             if len(results) >= batch_size and len(results) % batch_size == 0:
@@ -282,32 +300,20 @@ def parse_jntuk_pdf_generator(file_path, batch_size=50):
                     yield batch_records
 
     # Yield remaining students in proper batches
-    remaining_students = []
+    remaining_student_records = []
     for htno, student_data in results.items():
-        if htno not in processed_students and student_data.get('subjectGrades'):
-            remaining_students.append(htno)
-    
-    # Process remaining students in batches
-    for i in range(0, len(remaining_students), batch_size):
-        batch_htnos = remaining_students[i:i + batch_size]
-        batch_records = []
-        
-        for htno in batch_htnos:
-            student_data = results[htno]
+        if student_data.get('subjectGrades'):
             # Calculate SGPA
             total_points = 0
             total_credits = 0
-            
             for subject in student_data['subjectGrades']:
                 grade = subject.get('grade', 'F')
                 credits = subject.get('credits', 0)
                 points = grade_points.get(grade, 0)
                 total_points += points * credits
                 total_credits += credits
-            
             sgpa = round(total_points / total_credits, 2) if total_credits > 0 else 0.0
-            
-            batch_records.append({
+            remaining_student_records.append({
                 "student_id": student_data['student_id'],
                 "semester": student_data['semester'],
                 "university": student_data['university'],
@@ -315,7 +321,8 @@ def parse_jntuk_pdf_generator(file_path, batch_size=50):
                 "sgpa": sgpa,
                 "subjectGrades": student_data['subjectGrades']
             })
-        
+    for i in range(0, len(remaining_student_records), batch_size):
+        batch_records = remaining_student_records[i:i + batch_size]
         if batch_records:
             batch_count += 1
             students_processed += len(batch_records)

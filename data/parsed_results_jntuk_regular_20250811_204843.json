@@ -1,0 +1,1198 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-11T20:48:43.088630",
+    "total_students": 50,
+    "original_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+    "processing_status": "in_progress",
+    "year": "Unknown",
+    "semesters": [
+      "Unknown"
+    ],
+    "last_batch_processed": 1,
+    "last_updated": "2025-08-11T20:50:24.249775"
+  },
+  "firebase_upload": {
+    "batches_completed": 1,
+    "students_saved": 0,
+    "duplicates_skipped": 50,
+    "upload_started_at": "",
+    "upload_completed_at": ""
+  },
+  "students": [
+    {
+      "student_id": "17B81A0106",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 8,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A0126",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 15,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A0136",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 8,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 9,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A0221",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 13,
+          "grade": "C",
+          "credits": 3.0
+        },
+        {
+          "code": "R161208",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS - I",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A0314",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 9,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 15,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A0324",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 19,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A0468",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161211",
+          "subject": "APPLIED CHEMISTRY",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A1227",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161216",
+          "subject": "ENGINEERING MECHANICS",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A1240",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161211",
+          "subject": "APPLIED CHEMISTRY",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "17B81A1285",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161211",
+          "subject": "APPLIED CHEMISTRY",
+          "internals": 13,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0110",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0112",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 14,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161206",
+          "subject": "ENGINEERING DRAWING",
+          "internals": 21,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0117",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 16,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 16,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161206",
+          "subject": "ENGINEERING DRAWING",
+          "internals": 20,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0139",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0204",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 16,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161208",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS - I",
+          "internals": 13,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0213",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 14,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161206",
+          "subject": "ENGINEERING DRAWING",
+          "internals": 20,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161207",
+          "subject": "APPLIED PHYSICS",
+          "internals": 13,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R161208",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS - I",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0262",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0264",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161208",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS - I",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0312",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 21,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0322",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161209",
+          "subject": "BASIC ELECTRICAL AND ELECTRONICS ENGINEE",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161210",
+          "subject": "ENGINEERING DRAWING",
+          "internals": 22,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0329",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 15,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0330",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.5,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 15,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R161210",
+          "subject": "ENGINEERING DRAWING",
+          "internals": 18,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0342",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161209",
+          "subject": "BASIC ELECTRICAL AND ELECTRONICS ENGINEE",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0364",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0371",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0377",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161209",
+          "subject": "BASIC ELECTRICAL AND ELECTRONICS ENGINEE",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R161210",
+          "subject": "ENGINEERING DRAWING",
+          "internals": 22,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0386",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161209",
+          "subject": "BASIC ELECTRICAL AND ELECTRONICS ENGINEE",
+          "internals": 11,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0389",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 17,
+          "grade": "C",
+          "credits": 3.0
+        },
+        {
+          "code": "R161209",
+          "subject": "BASIC ELECTRICAL AND ELECTRONICS ENGINEE",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0463",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R161214",
+          "subject": "ELECTRICAL AND MECHANICAL TECHNOLOGY",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A0540",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1202",
+          "subject": "MATHEMATICS-II",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1204",
+          "subject": "APPLIED PHYSICS",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19ES1201",
+          "subject": "PROGRAMMING FOR PROBLEM SOLVING USING C",
+          "internals": 16,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "18B81A1224",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.5,
+      "subjectGrades": [
+        {
+          "code": "R161203",
+          "subject": "MATHEMATICS - III",
+          "internals": 12,
+          "grade": "C",
+          "credits": 3.0
+        },
+        {
+          "code": "R161211",
+          "subject": "APPLIED CHEMISTRY",
+          "internals": 18,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0102",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19ES1201",
+          "subject": "PROGRAMMING FOR PROBLEM SOLVING USING C",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0110",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19ES1201",
+          "subject": "PROGRAMMING FOR PROBLEM SOLVING USING C",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0111",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0112",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1210",
+          "subject": "ENGINEERING CHEMISTRY",
+          "internals": 11,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0116",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0117",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 17,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1210",
+          "subject": "ENGINEERING CHEMISTRY",
+          "internals": 14,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R19ES1201",
+          "subject": "PROGRAMMING FOR PROBLEM SOLVING USING C",
+          "internals": 14,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0118",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1210",
+          "subject": "ENGINEERING CHEMISTRY",
+          "internals": 11,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0121",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1210",
+          "subject": "ENGINEERING CHEMISTRY",
+          "internals": 10,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R19ES1201",
+          "subject": "PROGRAMMING FOR PROBLEM SOLVING USING C",
+          "internals": 9,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0133",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1210",
+          "subject": "ENGINEERING CHEMISTRY",
+          "internals": 8,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0136",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 18,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0210",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1204",
+          "subject": "APPLIED PHYSICS",
+          "internals": 12,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0218",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19BS1204",
+          "subject": "APPLIED PHYSICS",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0220",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0223",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0233",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 14,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0241",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0247",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1204",
+          "subject": "APPLIED PHYSICS",
+          "internals": 14,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0248",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R19ES1217",
+          "subject": "ELECTRICAL CIRCUIT ANALYSIS-I",
+          "internals": 14,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    },
+    {
+      "student_id": "19B81A0264",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R19BS1203",
+          "subject": "MATHEMATICS-III",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "7f5be76f41ef6c97bb50187c7bc68874.pdf",
+      "source_document": "7f5be76f41ef6c97bb50187c7bc68874.pdf"
+    }
+  ]
+}

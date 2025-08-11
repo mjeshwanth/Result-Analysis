@@ -1,0 +1,1121 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "regular",
+    "processed_at": "2025-08-11T20:56:03.571929",
+    "total_students": 50,
+    "original_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+    "processing_status": "in_progress",
+    "year": "Unknown",
+    "semesters": [
+      "Unknown"
+    ],
+    "last_batch_processed": 1,
+    "last_updated": "2025-08-11T20:57:56.618678"
+  },
+  "firebase_upload": {
+    "batches_completed": 1,
+    "students_saved": 6,
+    "duplicates_skipped": 44,
+    "upload_started_at": "",
+    "upload_completed_at": ""
+  },
+  "students": [
+    {
+      "student_id": "17B81A0221",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1622022",
+          "subject": "ELECTRICAL MACHINES-II",
+          "internals": 16,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "17B81A02C1",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622024",
+          "subject": "CONTROL SYSTEMS",
+          "internals": 0,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0204",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622022",
+          "subject": "ELECTRICAL MACHINES-II",
+          "internals": 14,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622024",
+          "subject": "CONTROL SYSTEMS",
+          "internals": 15,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0213",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622021",
+          "subject": "ELECTRICAL MEASUREMENTS",
+          "internals": 16,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622022",
+          "subject": "ELECTRICAL MACHINES-II",
+          "internals": 13,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622024",
+          "subject": "CONTROL SYSTEMS",
+          "internals": 17,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0262",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622021",
+          "subject": "ELECTRICAL MEASUREMENTS",
+          "internals": 17,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622022",
+          "subject": "ELECTRICAL MACHINES-II",
+          "internals": 10,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622024",
+          "subject": "CONTROL SYSTEMS",
+          "internals": 16,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0322",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622031",
+          "subject": "KINEMATICS OF MACHINERY",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622032",
+          "subject": "THERMAL ENGINEERING -I",
+          "internals": 11,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1622035",
+          "subject": "MACHINE DRAWING",
+          "internals": 20,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0377",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622031",
+          "subject": "KINEMATICS OF MACHINERY",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0387",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1622033",
+          "subject": "PRODUCTION TECHNOLOGY",
+          "internals": 12,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "18B81A0540",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1622053",
+          "subject": "ADVANCED DATA STRUCTURES",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0102",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R1922012",
+          "subject": "HYDRAULICS AND HYDRAULIC MACHINERY",
+          "internals": 19,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0115",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922011",
+          "subject": "STRENGTH OF MATERIALS-II",
+          "internals": 15,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0121",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1922012",
+          "subject": "HYDRAULICS AND HYDRAULIC MACHINERY",
+          "internals": 11,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0284",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922026",
+          "subject": "SIGNALS AND SYSTEMS",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0304",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922034",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0330",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922034",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0343",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922031",
+          "subject": "COMPLEX VARIABLES & STATISTICAL METHODS",
+          "internals": 19,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922035",
+          "subject": "METAL CUTTING & MACHINE TOOLS",
+          "internals": 15,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0352",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922031",
+          "subject": "COMPLEX VARIABLES & STATISTICAL METHODS",
+          "internals": 22,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922034",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922035",
+          "subject": "METAL CUTTING & MACHINE TOOLS",
+          "internals": 23,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0353",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922035",
+          "subject": "METAL CUTTING & MACHINE TOOLS",
+          "internals": 16,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0362",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.33,
+      "subjectGrades": [
+        {
+          "code": "R1922031",
+          "subject": "COMPLEX VARIABLES & STATISTICAL METHODS",
+          "internals": 21,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922032",
+          "subject": "KINEMATICS OF MACHINERY",
+          "internals": 23,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922033",
+          "subject": "APPLIED THERMODYNAMICS",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R1922034",
+          "subject": "FLUID MECHANICS & HYDRAULIC MACHINES",
+          "internals": 17,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R1922035",
+          "subject": "METAL CUTTING & MACHINE TOOLS",
+          "internals": 22,
+          "grade": "C",
+          "credits": 3.0
+        },
+        {
+          "code": "R1922036",
+          "subject": "DESIGN OF MACHINE MEMBERS-I",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0365",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922036",
+          "subject": "DESIGN OF MACHINE MEMBERS-I",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0488",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922043",
+          "subject": "ELECTROMAGNETIC WAVES AND TRANSMISSION L",
+          "internals": 21,
+          "grade": "ABSENT",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922044",
+          "subject": "ANALOG COMMUNICATIONS",
+          "internals": 21,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0504",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1922052",
+          "subject": "JAVA PROGRAMMING",
+          "internals": 13,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A0534",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R1922052",
+          "subject": "JAVA PROGRAMMING",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R1922055",
+          "subject": "FORMAL LANGUAGES AND AUTOMATA THEORY",
+          "internals": 20,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A1255",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R1922054",
+          "subject": "DATABASE MANAGEMENT SYSTEMS",
+          "internals": 18,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A1257",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R1922122",
+          "subject": "THEORY OF COMPUTATION",
+          "internals": 13,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "19B81A12B4",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 5.0,
+      "subjectGrades": [
+        {
+          "code": "R1922054",
+          "subject": "DATABASE MANAGEMENT SYSTEMS",
+          "internals": 16,
+          "grade": "C",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0101",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2022013",
+          "subject": "HYDRAULICS AND HYDRAULIC MACHINERY",
+          "internals": 12,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0108",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2022012",
+          "subject": "STRENGTH OF MATERIALS-II",
+          "internals": 15,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0110",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2022013",
+          "subject": "HYDRAULICS AND HYDRAULIC MACHINERY",
+          "internals": 13,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0142",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022012",
+          "subject": "STRENGTH OF MATERIALS-II",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0241",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022024",
+          "subject": "INDUCTION AND SYNCHRONOUS MACHINES",
+          "internals": 17,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0294",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022024",
+          "subject": "INDUCTION AND SYNCHRONOUS MACHINES",
+          "internals": 20,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0304",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022033",
+          "subject": "THERMAL ENGINEERING-I",
+          "internals": 25,
+          "grade": "ABSENT",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0328",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 17,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0334",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022033",
+          "subject": "THERMAL ENGINEERING-I",
+          "internals": 23,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0342",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022032",
+          "subject": "DYNAMICS OF MACHINERY",
+          "internals": 13,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0343",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 25,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R2022033",
+          "subject": "THERMAL ENGINEERING-I",
+          "internals": 24,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0356",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 26,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022032",
+          "subject": "DYNAMICS OF MACHINERY",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022033",
+          "subject": "THERMAL ENGINEERING-I",
+          "internals": 24,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0358",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 27,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0362",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 26,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0367",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 22,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0369",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 5,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0375",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022032",
+          "subject": "DYNAMICS OF MACHINERY",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0376",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 16,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022031",
+          "subject": "MATERIAL SCIENCE & METALLURGY",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022032",
+          "subject": "DYNAMICS OF MACHINERY",
+          "internals": 15,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022033",
+          "subject": "THERMAL ENGINEERING-I",
+          "internals": 14,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022034",
+          "subject": "INDUSTRIAL ENGINEERING AND MANAGEMENT",
+          "internals": 11,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0388",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022032",
+          "subject": "DYNAMICS OF MACHINERY",
+          "internals": 21,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0390",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 23,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022032",
+          "subject": "DYNAMICS OF MACHINERY",
+          "internals": 19,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022033",
+          "subject": "THERMAL ENGINEERING-I",
+          "internals": 21,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0393",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 20,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0394",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R2022011",
+          "subject": "COMPLEX VARIABLES AND STATISTICAL METHOD",
+          "internals": 21,
+          "grade": "D",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0462",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022043",
+          "subject": "ANALOG COMMUNICATIONS",
+          "internals": 18,
+          "grade": "F",
+          "credits": 0.0
+        },
+        {
+          "code": "R2022044",
+          "subject": "LINEAR CONTROL SYSTEMS",
+          "internals": 15,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    },
+    {
+      "student_id": "20B81A0470",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-11",
+      "sgpa": 0.0,
+      "subjectGrades": [
+        {
+          "code": "R2022044",
+          "subject": "LINEAR CONTROL SYSTEMS",
+          "internals": 16,
+          "grade": "E",
+          "credits": 3.0
+        }
+      ],
+      "pdf_filename": "f497545c49952c8b84ae8477f3bdd811.pdf",
+      "source_document": "f497545c49952c8b84ae8477f3bdd811.pdf"
+    }
+  ]
+}
