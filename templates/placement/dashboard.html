@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training & Placement Dashboard</title>
+    
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Modern Design CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-design.css') }}">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         * {
             margin: 0;
@@ -290,16 +299,44 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🎓 Training & Placement Dashboard</h1>
-            <p>Placement Eligibility Analysis & Student CGPA Management</p>
+    <!-- Modern Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 11h8"></path>
+                    <path d="M8 15h6"></path>
+                </svg>
+                <span>Result Management</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="/" class="navbar-link">Dashboard</a></li>
+                <li><a href="/upload" class="navbar-link">Upload Results</a></li>
+                <li><a href="/placement" class="navbar-link">Placement</a></li>
+                <li><a href="/training-placement" class="navbar-link active">Training & Placement</a></li>
+                <li><a href="{{ url_for('data_files') }}" class="navbar-link">Data Files</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='/logout'">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </button>
+            </div>
         </div>
+    </nav>
 
-        <div class="nav-buttons">
-            <a href="/">🏠 Home</a>
-            <a href="/admin/dashboard">📊 Admin Dashboard</a>
-            <a href="/upload">⬆️ Upload Results</a>
+    <main class="container">
+        <div class="page-header">
+            <h1>
+                <i data-lucide="graduation-cap"></i>
+                Training & Placement Dashboard
+            </h1>
+            <p>Placement Eligibility Analysis & Student CGPA Management</p>
         </div>
 
         <div class="filters">
@@ -579,6 +616,13 @@
             // For now, we'll open the print dialog
             window.print();
         }
+        
+        // Initialize Lucide icons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>

@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>Dashboard | Notice Board</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Modern Design CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-design.css') }}">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
@@ -199,13 +209,47 @@
     </style>
 </head>
 <body>
+    <!-- Modern Navigation -->
     <nav class="navbar">
-        <h1>Dashboard</h1>
-        <div class="nav-links">
-            <a href="/upload" class="nav-link">Upload Results</a>
-            <button class="action-btn" onclick="showNoticeForm()">Create New Notice</button>
+        <div class="navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 11h8"></path>
+                    <path d="M8 15h6"></path>
+                </svg>
+                <span>Result Management</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="/" class="navbar-link">Dashboard</a></li>
+                <li><a href="/upload" class="navbar-link">Upload Results</a></li>
+                <li><a href="/placement" class="navbar-link">Placement</a></li>
+                <li><a href="/training-placement" class="navbar-link">Training & Placement</a></li>
+                <li><a href="{{ url_for('data_files') }}" class="navbar-link">Data Files</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='/logout'">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </button>
+            </div>
         </div>
     </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Admin Dashboard</h1>
+            <div>
+                <button class="btn btn-primary" onclick="showNoticeForm()">
+                    <i data-lucide="plus-circle"></i>
+                    Create New Notice
+                </button>
+            </div>
+        </div>
 
     <div class="main-content">
         <aside class="sidebar">
@@ -498,6 +542,13 @@
         function filterNotices() {
             loadNotices();
         }
+        
+        // Initialize Lucide icons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>

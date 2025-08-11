@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -488,6 +488,37 @@
     </style>
 </head>
 <body>
+    <!-- Modern Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 11h8"></path>
+                    <path d="M8 15h6"></path>
+                </svg>
+                <span>Result Management</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="/" class="navbar-link">Dashboard</a></li>
+                <li><a href="/upload" class="navbar-link">Upload Results</a></li>
+                <li><a href="/placement" class="navbar-link">Placement</a></li>
+                <li><a href="/training-placement" class="navbar-link">Training & Placement</a></li>
+                <li><a href="{{ url_for('data_files') }}" class="navbar-link active">Data Files</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='/logout'">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <div class="data-page">
         <div class="data-container">
             <!-- Header -->
