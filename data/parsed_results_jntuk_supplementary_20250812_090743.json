@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "format": "jntuk",
+    "exam_type": "supplementary",
+    "processed_at": "2025-08-12T09:07:43.887544",
+    "total_students": 500,
+    "original_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+    "processing_status": "in_progress",
+    "year": "2 Year",
+    "semesters": [
+      "Semester 1"
+    ],
+    "last_batch_processed": 1,
+    "last_updated": "2025-08-12T09:08:40.959568"
+  },
+  "firebase_upload": {
+    "batches_completed": 1,
+    "students_saved": 500,
+    "duplicates_skipped": 0,
+    "upload_started_at": "",
+    "upload_completed_at": ""
+  },
+  "students": [
+    {
+      "student_id": "17B81A0106",
+      "semester": "Semester 2",
+      "university": "JNTUK",
+      "upload_date": "2025-08-12",
+      "sgpa": 4.0,
+      "subjectGrades": [
+        {
+          "code": "R161202",
+          "subject": "MATHEMATICS-II (MATHEMATICAL METHODS)",
+          "internals": 8,
+          "grade": "D",
+          "credits": 3.0
+        },
+        {
+          "code": "R161204",
+          "subject": "ENGINEERING PHYSICS",
+          "internals": 10,
+          "grade": "F",
+          "credits": 0.0
+        }
+      ],
+      "pdf_filename": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "source_document": "Results of I B.Tech II Semester (R23R20R19R16) RegularSupplementary Examinations, July-2024.pdf",
+      "year": "2 Year",
+      "examType": "supplementary",
+      "availableSemesters": [
+        "Semester 1"
+      ],
+      "availableExamTypes": [
+        "supplementary"
+      ],
+      "format": "jntuk",
+      "uploadId": "upload_20250812_090743",
+      "attempts": 0,
+      "uploadedAt": 
+  ]
+}
